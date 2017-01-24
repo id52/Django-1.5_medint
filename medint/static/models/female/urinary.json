@@ -1,0 +1,19 @@
+{
+  "materials": {
+    "material__88": { "map_Kd": "UrinarySystem_diffuse.jpg" }  },
+  "decodeParams": {
+    "decodeOffsets": [-3889,43205,-6543,0,0,-511,-511,-511],
+    "decodeScales": [0.002050,0.002050,0.002050,0.000978,0.000978,0.001957,0.001957,0.001957]
+  },
+"urls": {
+    "6b282c2d.female_urinary.utf8": [
+      { "material": "material__88",
+        "attribRange": [0, 12548],
+        "indexRange": [100384, 6222],
+        "bboxes": 119050,
+        "names": ["female_urinary_system"],
+        "lengths": [18666]
+      }
+    ]
+  }
+}

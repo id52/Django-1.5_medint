@@ -1,0 +1,30 @@
+{
+  "materials": {
+    "07___default": { "Kd": [249, 218, 98] },
+    "08___default": { "Kd": [253, 250, 209] }  },
+  "decodeParams": {
+    "decodeOffsets": [-3556,137,-2052,0,0,-511,-511,-511],
+    "decodeScales": [0.010754,0.010754,0.010754,0.000978,0.000978,0.001957,0.001957,0.001957]
+  },
+"urls": {
+    "81bb1dd8.female_nervous.utf8": [
+      { "material": "07___default",
+        "attribRange": [0, 47072],
+        "indexRange": [376576, 23486],
+        "bboxes": 447034,
+        "names": ["female_nervous"],
+        "lengths": [70458]
+      }
+    ]
+,
+    "3a32ddd2.female_nervous.utf8": [
+      { "material": "08___default",
+        "attribRange": [0, 16960],
+        "indexRange": [135680, 8476],
+        "bboxes": 161108,
+        "names": ["female_nervous"],
+        "lengths": [25428]
+      }
+    ]
+  }
+}

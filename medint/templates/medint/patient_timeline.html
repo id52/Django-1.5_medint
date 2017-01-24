@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+{% load medint %}
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/medint/css/timeline.css" />
+    <link rel="stylesheet/less" type="text/css" href="/static/css/medint.less" />
+    <link rel="stylesheet/less" type="text/css" href="/static/medint/css/styles.less" />
+    <link rel="stylesheet/less" type="text/css" href="/static/messaging/css/styles.less" />
+     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/static/js/sammy.min.js"></script>
+    <script src="/static/js/medint.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/medint/js/timeline-min.js"></script>
+    <script src="/static/js/less.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div id="header">
+    <div id="logoTop"><a href="#main" id="btn-MI"><img src="/static/img/dashboard/logo-MI.png" alt="" /></a></div>
+    <div class="mainMenu hide" id="main-nav">
+        {% block topmenu %}
+        {% endblock %}
+
+    </div>
+    <div id="headerctRight">
+        {% userinfo user %}
+    </div>
+</div>
+<div id="content">
+    <div id="generalViewer" class="full">
+
+<div class="patientViewer" data-bind="visible:patient() != null, with: patient()" style="height:100%;">
+        <div class="patient-static-grid">
+            <ul>
+                <li style="min-height:230px;">
+                    <div class="content">
+                        <div class="patientInfo">
+                            <div class="user-avatar"><img src="/static/img/dashboard/default-user.png" alt=""/></div>
+                            <div class="name-patient"><h4 data-bind="text:full_name"></h4><p><span data-bind="text:sex"></span>, <span data-bind="text:age"></span> Yrs. Old</p></div>
+                        </div>
+                        <div class="patientDetails">
+                            <div class="content">
+                                <p class="info">Melanomas are dangerous skin cancers. Abe John Smith has had four melanomas (at least), as follows:</p>
+                                <p class="directions"><span class="title">TEL: </span> <span data-bind="text:phone">(415) 555-5555</span></p>
+                                <p class="directions"><span class="title">ADDRESS: </span> <span data-bind="text:address"></span><br/><span data-bind="text:city"></span>, <span data-bind="text:state"></span> <span data-bind="text:zipcode"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="transparent">
+                    <div class="patientDiscussions-modules">
+                        <div class="title">
+                        <h4>Latest discussions</h4>
+                         <div class="btn-see"><a href="#">See all</a></div>
+                        </div>
+                        <ul>
+                            <li>
+                                <div class="user-avatar"><img src="/static/img/dashboard/default-user.png" alt=""/></div>
+                                <div class="discussion-content">
+                                    <div class="header-info">
+                                        <span class="username">Dr. John Librett - </span><span class="discussionname">Main subject</span>
+                                    </div>
+                                    <div class="excerpt-discussion">
+                                        <p>Lorem ipsum dolor sit amet! Sagittis porta semper magna porta litora.</p>
+                                    </div>
+                                </div>
+                                <div class="info-thread">
+                                    <div class="badge">1</div>
+                                    <div class="date">
+                                            Jan 19
+                                      </div>
+
+                                </div>
+                            </li>
+                            <li>
+                                <div class="user-avatar"><img src="/static/img/dashboard/default-user.png" alt=""/></div>
+                                <div class="discussion-content">
+                                    <div class="header-info">
+                                        <span class="username">Dr. Wanda Carter - </span><span class="discussionname">The nodle</span>
+                                    </div>
+                                    <div class="excerpt-discussion">
+                                        <p>Lorem ipsum dolor sit amet! Sagittis porta semper magna porta litora.</p>
+                                    </div>
+                                </div>
+                                <div class="info-thread">
+                                    <div class="badge">3</div>
+                                    <div class="date"> Jan 14</div>
+                                </div>
+                            </li>
+                         </ul>
+                        <div class="btn-more-discuss"><a href="#">3 more discussions</a></div>
+                     </div>
+                </li>
+            </ul>
+        </div>
+
+    <div class="patients-grid timeline">
+        <ul>
+            <li data-row="1" data-col="1" data-sizex="4" data-sizey="2" class="block">
+                <div id="mytimeline">
+                    <ul>
+                        {% for key,value in result.items %}
+                            <li>
+                                <div style='font-weight: bold; font-size: 1.5em'>{{ key }}</div>
+
+                                    {% for i in value %}
+                                    <div>
+                                        <dl>
+                                        {% for k, v in i.items %}
+                                            {% if not '__' in k %}
+                                                <dt style="font-weight: bold; display: inline">{{ k }}:</dt><dd style="display: inline">{{ v }}</dd><br>
+                                            {% endif %}
+
+                                        {% endfor %}
+                                        </dl>
+                                    </div>
+                                    <hr />
+                                    {% endfor %}
+                            </li>
+                        {% endfor %}
+                        </ul>
+                </div>
+            </li>
+        </ul>
+
+
+
+
+<script type="text/javascript" src="//www.google.com/jsapi"></script>
+<script src="/static/patientlist/js/grid.js" type="text/javascript"></script>
+
+
+
+<script>
+google.load("visualization", "1");
+google.setOnLoadCallback(drawVisualization);
+function drawVisualization() {
+     var data = new google.visualization.DataTable();
+     data.addColumn('datetime', 'start');
+     data.addColumn('datetime', 'end');
+     data.addColumn('string', 'content');
+{##}
+{##}
+{##}
+    {% for p in result.problem %}
+    data.addRow([new Date('{{ p.startDate }}'), new Date('{{ p.endDate }}'), '{{ p.name_title }}']);
+    {% endfor %}
+    {% for p in result.medication %}
+    data.addRow([new Date('{{ p.startDate }}'), , '{{ p.name_title }}']);
+    {% endfor %}
+    {% for p in result.immunization %}
+    data.addRow([new Date('{{ p.date }}'), , '{{ p.product_class_title }}']);
+    {% endfor %}
+    options = {
+      "width":  "100%",
+      "height": "99%"
+{#      "style": "box" // optional#}
+    };
+{##}
+    // Instantiate our timeline object.
+    var timeline = new links.Timeline(document.getElementById('mytimeline'));
+
+    // Draw our timeline with the created data and options
+    timeline.draw(data, options);
+
+}
+
+</script>
+</div>
+</div>
+</div></div>
+<script>
+var _l = $(window).width();
+var _h  = $(window).height();
+var  pgw = Math.round(_l-$('.patient-static-grid').width() -40);
+$(".patients-grid.timeline ul").gridster({
+        widget_margins: [10, 10],
+        widget_base_dimensions: [200, 250]
+});
+var grid=$(".patients-grid.timeline ul").gridster({
+        widget_margins: [10, 10],
+        widget_base_dimensions: [200, 250]
+}).data('gridster');
+grid.disable();
+$(".patients-grid.timeline").width(pgw);
+
+ $(window).resize(function(e){
+        _l = $(window).width();
+        _h  = $(window).height();
+        pgw = Math.round(_l-$('.patient-static-grid').width() -40);
+        gH= $('#generalViewer').height()-20;
+        $(".patients-grid.timeline").width(pgw);
+        $('.patientViewer').height(gH);
+ });
+</script>
+<script src="/static/js/appMI.js" type="text/javascript"></script>
+</body>
+</html>

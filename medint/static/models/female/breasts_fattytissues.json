@@ -1,0 +1,19 @@
+{
+  "materials": {
+    "femalebreasts": { "map_Kd": "Breasts_diffuse.jpg" }  },
+  "decodeParams": {
+    "decodeOffsets": [-8191,69637,-3794,0,0,-511,-511,-511],
+    "decodeScales": [0.001805,0.001805,0.001805,0.000978,0.000978,0.001957,0.001957,0.001957]
+  },
+"urls": {
+    "064b42dc.female_breasts_fattytissue.utf8": [
+      { "material": "femalebreasts",
+        "attribRange": [0, 1452],
+        "indexRange": [11616, 708],
+        "bboxes": 13740,
+        "names": ["female_breasts_fattytissue"],
+        "lengths": [2124]
+      }
+    ]
+  }
+}

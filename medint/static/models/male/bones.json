@@ -1,0 +1,44 @@
+{
+  "materials": {
+    "material__38": { "map_Kd": "Skeleton_diffuse.jpg" },
+    "material__39": { "map_Kd": "Skull_diffuse.jpg" }  },
+
+  "decodeParams":
+  {
+    "decodeOffsets": [-3876,30,-1936,0,0,-511,-511,-511],
+    "decodeScales": [0.011165,0.011165,0.011165,0.000978,0.000978,0.001957,0.001957,0.001957]
+  },
+  
+  "urls":
+  {
+    "74c55409.male_skeleton.utf8":
+    [
+      { "material": "material__38",
+        "attribRange": [0, 55295],
+        "indexRange": [442360, 25403],
+        "bboxes": 617434,
+        "names": ["male_skeleton"],
+        "lengths": [76209]
+      },
+
+      { "material": "material__38",
+        "attribRange": [518569, 10407],
+        "indexRange": [601825, 5203],
+        "bboxes": 617440,
+        "names": ["male_skeleton"],
+        "lengths": [15609]
+      }
+    ],
+
+    "4e8d94c2.male_skeleton.utf8":
+    [
+      { "material": "material__39",
+        "attribRange": [0, 19768],
+        "indexRange": [158144, 9418],
+        "bboxes": 186398,
+        "names": ["male_skeleton"],
+        "lengths": [28254]
+      }
+    ]
+  }
+}

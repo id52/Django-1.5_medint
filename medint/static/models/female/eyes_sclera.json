@@ -1,0 +1,19 @@
+{
+  "materials": {
+    "body_outer_eyes": { "Kd": [0, 0, 0, 80] }  },
+  "decodeParams": {
+    "decodeOffsets": [-8191,318830,-5363,0,0,-511,-511,-511],
+    "decodeScales": [0.000520,0.000520,0.000520,0.000978,0.000978,0.001957,0.001957,0.001957]
+  },
+"urls": {
+    "779ab0db.female_eyes_sclera.utf8": [
+      { "material": "body_outer_eyes",
+        "attribRange": [0, 1280],
+        "indexRange": [10240, 640],
+        "bboxes": 12160,
+        "names": ["female_body_eyes_sclera"],
+        "lengths": [1920]
+      }
+    ]
+  }
+}

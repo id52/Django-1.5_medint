@@ -1,0 +1,37 @@
+{
+  "materials": {
+    "material__5": { "map_Kd": "MuscularSystem_diffuse.jpg"}  },
+  "decodeParams": {
+    "decodeOffsets": [-3564,99,-2120,0,0,-511,-511,-511],
+    "decodeScales": [0.010647,0.010647,0.010647,0.000978,0.000978,0.001957,0.001957,0.001957]
+  },
+"urls": {
+    "a3b5ed2b.female_muscles.utf8": [
+      { "material": "material__5",
+        "attribRange": [0, 40288],
+        "indexRange": [322304, 19952],
+        "bboxes": 382160,
+        "names": ["femalehuman_muscles"],
+        "lengths": [59856]
+      }
+    ]
+,
+    "e3cf97a6.female_muscles.utf8": [
+      { "material": "material__5",
+        "attribRange": [0, 55295],
+        "indexRange": [442360, 25907],
+        "bboxes": 787400,
+        "names": ["femalehuman_muscles"],
+        "lengths": [77721]
+      }
+,
+      { "material": "material__5",
+        "attribRange": [520081, 28139],
+        "indexRange": [745193, 14069],
+        "bboxes": 787406,
+        "names": ["femalehuman_muscles"],
+        "lengths": [42207]
+      }
+    ]
+  }
+}

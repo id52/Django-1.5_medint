@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        .hidden {display: none}
+    </style>
+    <script src="{% if request.is_secure %}https{% else %}http{% endif %}://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/static/js/knockout-2.2.1.js"></script>
+    <script src="/static/js/sammy.min.js"></script>
+</head>
+<body>
+    <div id="main-nav">
+        <span><a href="#message">message</a></span>
+        <span><a href="#patients">patients</a></span>
+        <span><a href="#documents">documents</a></span>
+    </div>
+
+    <header id="main-header" class="hidden">
+        <span><a href="#message">message</a></span>
+        <span><a href="#patients">patients</a></span>
+        <span><a href="#documents">documents</a></span>
+
+        USER INFO
+    </header>
+    <section class="ui-panel hidden" id="message">
+        Messages
+    </section>
+    <section class="ui-panel hidden" id="patients">
+        Patients
+    </section>
+    <section class="ui-panel hidden" id="documents">
+        <table id="document-list">
+            <thead><tr>
+                <th>Date</th>
+                <th>Legal</th>
+                <th>State</th>
+            </tr></thead>
+            <tbody data-bind="foreach: dd">
+            <tr>
+                <td data-bind="text: date"></td>
+                <td data-bind="text: title"></td>
+                <td data-bind="text: state"></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</body>
+<script>
+
+    $(function(){
+        function pageModel (){
+            var self = this;
+            self.currentSection = '';
+
+            function openSection(section){
+                if($('#main-nav').is(':visible')){
+                    $('#main-nav').fadeOut(
+                        function(){
+                            $('#main-header, #'+section).fadeIn();
+                        }
+                    );
+                } else {
+                    if (section !== self.currentSection){
+                        $('.ui-panel').hide(function(){$('#' + section).show();});
+                    }
+                }
+                self.currentSection = section;
+            }
+
+            Sammy(function() {
+                this.get('#:part', function() {
+                    openSection(this.params.part)
+                    console.log(this.params.part);
+                });
+            }).run();
+        }
+        ko.applyBindings(new pageModel(), $('#main-nav')[0]);
+
+        function Docoment(data) {
+            this.state = ko.observable(data.state);
+            this.title = ko.observable(data.title);
+            this.date = ko.observable(data.date);
+        }
+
+        function DocumentsModel(){
+            var self = this;
+            self.documents = ko.observableArray([]);
+            self.dd = ko.observableArray([
+                {"date": "01.01.2013", "title": "Contract", "state":"new"}
+            ]);
+
+            $.getJSON('/static/include/documents.json', function(json){
+
+                var docs = $.map(json.data, function(item) { return new Docoment(item) });
+                console.log (docs);
+                self.dd(docs);
+            });
+
+
+        }
+
+        ko.applyBindings(new DocumentsModel(), $('#document-list')[0]);
+    });
+</script>
+</html>

@@ -1,0 +1,19 @@
+{
+  "materials": {
+    "15___default": { "Kd": [247, 24, 24] }  },
+  "decodeParams": {
+    "decodeOffsets": [-3552,130,-1844,0,0,-511,-511,-511],
+    "decodeScales": [0.010765,0.010765,0.010765,0.000978,0.000978,0.001957,0.001957,0.001957]
+  },
+"urls": {
+    "f37cc05c.female_circulatory_arteries.utf8": [
+      { "material": "15___default",
+        "attribRange": [0, 37497],
+        "indexRange": [299976, 18601],
+        "bboxes": 355779,
+        "names": ["female_circulatory_arteries"],
+        "lengths": [55803]
+      }
+    ]
+  }
+}

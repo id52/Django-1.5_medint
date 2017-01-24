@@ -1,0 +1,54 @@
+<div id="msgBox" class="newMsg"><div id="notification"><a href="#">4</a></div></div>
+<div id="ctDoctor">
+    <div id="menuDoctor" class="wrapper-dropdown">
+        <div id="avatar"><div class="avatar-littleReflect"></div><img src="/static/img/dashboard/empty-avatar.jpg" alt=""/></div>
+        <div class="nameDoctor">{{ user.user_info.first_name }} {{ user.user_info.last_name }}</div>
+        <div class="dropdown">
+            <div id="topDropDown">
+                <div class="big-avatar"><div class="bigReflect"></div><img src="/static/img/dashboard/big-empty-avatar.jpg" alt=""/></div>
+                <div class="doctorInfo">
+                    <h4>{{ user.user_info.first_name }} {{ user.user_info.last_name }}</h4>
+                    <p class="doctorMail">{{ user.user_info.email }}</p>
+                    {% if user.role == 3 or user.role == 2  %}
+                    <div class="blueButton">
+                        <a href="#profile">View profile</a>
+                    </div>
+                    {%  endif %}
+
+                </div>
+                <a href="#">Privacy</a>
+            </div>
+            <div id="footerDropDrown">
+                <div class="greyButton" id="btnaccount"><a href="#accounts">Account settings</a></div>
+                <div class="greyButton" id="btnlogout"><a href="logout">Logout</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        function DropDown(el) {
+            this.dd = el;
+            this.opts = el.find('div.dropdown');
+            this.initEvents();
+        }
+        DropDown.prototype = {
+            initEvents : function() {
+                var obj = this;
+
+                obj.dd.on('click', function(event){
+
+                    $(this).toggleClass('active');
+                    event.stopPropagation();
+                });
+                obj.opts.on('mouseleave',function(event){
+                    $(this).parent().delay(500).removeClass('active');
+                    event.stopPropagation();
+
+                });
+            }
+        };
+        var dd = new DropDown( $('#menuDoctor') );
+    });
+</script>

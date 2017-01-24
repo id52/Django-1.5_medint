@@ -1,0 +1,423 @@
+# 
+# Wavefront material file
+# Converted by the DEEP Exploration  Deep Exploration 5.7 5.7.3.4950 Release
+# Right Hemisphere, LTD
+# http://www.righthemisphere.com/
+# 
+
+newmtl Material__Female_Body_InnerEyes
+Ka 0 0 0
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 8
+map_Kd Female_eye_diffuse.jpg
+map_bump Female_eye_bump.jpg
+bump Female_eye_bump.jpg
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material__Body_Outer_Eyes
+Ka 0 0 0
+Kd 0 0 0
+Ks 0.55 0.55 0.55
+illum 2
+Ns 8
+d 0
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material__Female_Hair
+Ka 0 0 0
+Kd 1 1 1
+Ks 1 1 1
+illum 2
+Ns 8
+map_Kd Female_hair_diffuse.jpg
+map_bump Female_hair_bump.jpg
+bump Female_hair_bump.jpg
+map_opacity Female_hair_opacity.jpg
+map_d Female_hair_opacity.jpg
+refl 
+map_kS Female_hair_opacity.jpg
+map_kA 
+map_Ns 
+
+newmtl Material__Body_Female
+Ka 0 0 0
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 8
+map_Kd Female_body_diffuse.jpg
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material__FemaleBreasts
+Ka 0 0 0
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 8
+map_Kd Breasts_diffuse.jpg
+map_bump Breasts_bump.jpg
+bump Breasts_bump.jpg
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material__Circular_Heart_Lower
+Ka 0 0 0
+Kd 1 1 1
+Ks 1 1 1
+illum 2
+Ns 8
+map_Kd Heart_diffuse.jpg
+map_bump Heart_bump.jpg
+bump Heart_bump.jpg
+map_opacity 
+map_d 
+refl 
+map_kS Heart_specular.jpg
+map_kA 
+map_Ns 
+
+newmtl Material__Circular_Heart_Upper
+Ka 0 0 0
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 8
+map_Kd Heart2_diffuse.jpg
+map_bump Heart2_bump.jpg
+bump Heart2_bump.jpg
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Explorer_Default
+Ka 0 0 0
+Kd 0.752941 0.752941 0.752941
+Ks 0.752941 0.752941 0.752941
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material__Circulatory_Veins
+Ka 0 0 0
+Kd 0.188434 0.439448 0.7448
+Ks 0 0 0
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material__Circulatory_Arteries
+Ka 0 0 0
+Kd 0.7096 0.126309 0.162181
+Ks 0 0 0
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material__Digestive_System
+Ka 0 0 0
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 8
+map_Kd DigestiveSystem_diffuse.jpg
+map_bump DigestiveSystem_bump.jpg
+bump DigestiveSystem_bump.jpg
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material__Lymphatic_System
+Ka 0 0 0
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 8
+map_Kd LymphaticSystem_diffuse.jpg
+map_bump LymphaticSystem_bump.jpg
+bump LymphaticSystem_bump.jpg
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material__Nervous_Nerves
+Ka 0 0 0
+Kd 1 0.890196 0.266667
+Ks 0 0 0
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material__Nervous_Cerebrum_Mult
+Ka 0 0 0
+Kd 0.937255 0.796079 0.45098
+Ks 0.27 0.27 0.27
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material__Nervous_Cerebrum_Mult0
+Ka 0 0 0
+Kd 0.941177 0.654902 0.603922
+Ks 0.27 0.27 0.27
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material__Nervous_Cerebrum_Mult1
+Ka 0 0 0
+Kd 0.45098 0.709804 0.933333
+Ks 0.27 0.27 0.27
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material__Nervous_Cerebrum_Mult2
+Ka 0 0 0
+Kd 0.639216 0.752941 0.533333
+Ks 0.27 0.27 0.27
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material__Nervous_Cerebellum
+Ka 0 0 0
+Kd 0.631373 0.4 0.305882
+Ks 0 0 0
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material__Nervous_Cerebrum
+Ka 0 0 0
+Kd 0.941177 0.815686 0.713726
+Ks 0 0 0
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material__Female_Reproductive_S
+Ka 0 0 0
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 8
+map_Kd FemaleReproductiveSystem_diffuse.jpg
+map_bump FemaleReproductiveSystem_bump.jpg
+bump FemaleReproductiveSystem_bump.jpg
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material__Respiratory_System
+Ka 0 0 0
+Kd 1 1 1
+Ks 1 1 1
+illum 2
+Ns 8
+map_Kd RespiratorySystem_diffuse.jpg
+map_bump RespiratorySystem_bump.jpg
+bump RespiratorySystem_bump.jpg
+map_opacity 
+map_d 
+refl 
+map_kS RespiratorySystem_specular.jpg
+map_kA 
+map_Ns 
+
+newmtl Material__Skeletal_Skeleton
+Ka 0 0 0
+Kd 1 1 1
+Ks 1 1 1
+illum 2
+Ns 8
+map_Kd Skeleton_diffuse.jpg
+map_bump Skeleton_normal.jpg
+bump Skeleton_normal.jpg
+map_opacity 
+map_d 
+refl 
+map_kS Skeleton_specular.jpg
+map_kA 
+map_Ns 
+
+newmtl Material__Skeletal_Skull
+Ka 0 0 0
+Kd 1 1 1
+Ks 1 1 1
+illum 2
+Ns 8
+map_Kd Skull_diffuse.jpg
+map_bump Skull_normal.jpg
+bump Skull_normal.jpg
+map_opacity 
+map_d 
+refl 
+map_kS Skull_specular.jpg
+map_kA 
+map_Ns 
+
+newmtl Material__Reproductive_System
+Ka 0 0 0
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 8
+map_Kd ReproductiveSystem_diffuse.jpg
+map_bump ReproductiveSystem_bump.jpg
+bump ReproductiveSystem_bump.jpg
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material__Urinary_System
+Ka 0 0 0
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 8
+map_Kd UrinarySystem_diffuse.jpg
+map_bump UrinarySystem_bump.jpg
+bump UrinarySystem_bump.jpg
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material__Muscular_System
+Ka 0 0 0
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 8
+map_Kd MuscularSystem_diffuse.jpg
+map_bump MuscularSystem_bump.jpg
+bump MuscularSystem_bump.jpg
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 

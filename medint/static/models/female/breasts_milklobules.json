@@ -1,0 +1,19 @@
+{
+  "materials": {
+    "femalebreasts": { "map_Kd": "Breasts_diffuse.jpg" }  },
+  "decodeParams": {
+    "decodeOffsets": [-8191,72309,-1532,0,0,-511,-511,-511],
+    "decodeScales": [0.001746,0.001746,0.001746,0.000978,0.000978,0.001957,0.001957,0.001957]
+  },
+"urls": {
+    "f97fd5b0.female_breasts_milklobules.utf8": [
+      { "material": "femalebreasts",
+        "attribRange": [0, 17328],
+        "indexRange": [138624, 8536],
+        "bboxes": 164232,
+        "names": ["female_breasts_milklobules"],
+        "lengths": [25608]
+      }
+    ]
+  }
+}

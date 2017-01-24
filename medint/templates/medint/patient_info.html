@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+patient info {{ record }}
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="file" multiple="true"><input type="submit">
+</form>
+
+<ul>
+{% for key,value in result.items %}
+    <li>
+        <div style='font-weight: bold; font-size: 1.5em'>{{ key }}</div>
+
+            {% for i in value %}
+            <div>
+                <dl>
+                {% for k, v in i.items %}
+                    {% if not '__' in k %}
+                        <dt style="font-weight: bold; display: inline">{{ k }}:</dt><dd style="display: inline">{{ v }}</dd><br>
+                    {% endif %}
+
+                {% endfor %}
+                </dl>
+            </div>
+            <hr />
+            {% endfor %}
+    </li>
+{% endfor %}
+</ul>
+
+
+</body>
+</html>

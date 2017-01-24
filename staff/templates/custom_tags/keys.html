@@ -1,0 +1,152 @@
+<div id="keys-wrapper" style="position: relative">
+
+
+    <div class="doctorkeys">
+        <div class="container">
+        <h3 class="titleDoctor">Doctor keys</h3>
+        <ul data-bind="foreach: doctorKeys">
+            <li><a href="#" data-bind="text:displayName(), click:$root.selectDoctor"></a></li>
+        </ul>
+        <div data-bind="visible:doctorKeys().length==0" class="nokeys">There are no registered keys</div>
+        <input type="button" class="btn-write" data-bind="click:registerDoctor" value="Add a new key"/>
+         </div>
+    </div>
+
+    <!--<div class="patientkeys" data-bind="visible:(selectedDoctorKey() && selectedDoctorKey().user)">!-->
+    <div class="patientkeys">
+         <div class="container">
+        <h3 class="titlePatient">Patient keys</h3>
+        <ul data-bind="foreach: patientKeys">
+            <li><a href="#" data-bind="text:displayName(), click:$root.selectDoctor"></a></li>
+        </ul>
+        <div data-bind="visible:patientKeys().length==0" class="nokeys">There are no registered keys</div>
+        <input type="button" class="btn-write" data-bind="click:registerPatient" value="Add a new key"/>
+        </div>
+    </div>
+
+
+    <div id="key-dialog" class="modal hide">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3>Register new key</h3>
+        </div>
+        <div>
+            <form data-bind="submit:registerKey" method="post" action="#keys">
+                <input type="text" placeholder="Yubikey" maxlength="12" data-bind="value: uid">
+                <div class="modal-footer">
+                    <input type="submit" class="btn-write" value="Add key">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+$(function(){
+    var _h;
+    _h = $(window).height();
+    function Key(info){
+        var self = this;
+
+        self.displayName = function(){
+            var res = self.uid;
+            if ('undefined' !== typeof self.user){
+                res += ' (' + self.user.firstName + ' ' + self.user.lastName + ')';
+            }
+            return res;
+        };
+
+        (function(){
+            self.uid = info.uid;
+            if ('undefined' !== info.user){
+                self.user = info.user;
+            }
+        })();
+
+    }
+    function KeyModel() {
+        var self = this, DOCTOR= 3, PATIENT= 4, role;
+        self.uid = ko.observable('');
+        self.doctorKeys = ko.observableArray([]);
+        self.patientKeys = ko.observableArray([]);
+        self.selectedDoctorKey = ko.observable();
+
+
+        self.registerDoctor = function(){
+            role = DOCTOR;
+            $('#key-dialog .modal-header h3').html("Add a new Doctor's key");
+            $('#key-dialog').modal();
+        };
+
+        self.registerPatient = function(){
+            role = PATIENT;
+            $('#key-dialog .modal-header h3').html("Add a new Patient's key");
+            $('#key-dialog').modal();
+        };
+
+        self.selectDoctor = function(key){
+            self.selectedDoctorKey(key);
+            if ('undefined' !== typeof key.user){
+                loadKeys(key.user.id);
+            } else {
+                self.patientKeys([]);
+            }
+        };
+
+        self.registerKey = function(){
+            var url = role==DOCTOR ? '/staff/api/key/' : '/staff/api/key/' + self.selectedDoctorKey().user.id;
+            var res = $.rest.create(url, {role:role, uid: self.uid});
+            if(res.isOk){
+                $('#key-dialog').modal('hide');
+                success('New key has been registered');
+                if (role == DOCTOR){
+                    loadKeys();
+                } else {
+                    loadKeys(self.selectedDoctorKey().user.id);
+                }
+            } else {
+                error(res.error);
+            }
+            return false;
+        };
+
+        function loadKeys(parent){
+            var keys = [], i;
+            if ('undefined' == typeof parent){
+                var res = $.rest.get('/staff/api/key/');
+                if(res.isOk){
+                    if ('undefined' !== typeof res.data){
+                        for (i=0; i<res.data.length; i++){
+                            keys.push(new Key(res.data[i]));
+                        }
+                    }
+                    self.doctorKeys(keys);
+                }
+            } else {
+                var res = $.rest.get('/staff/api/key/' + parent);
+                if(res.isOk){
+                    if ('undefined' !== typeof res.data){
+                        for (i=0; i<res.data.length; i++){
+                            keys.push(new Key(res.data[i]));
+                        }
+                    }
+                    self.patientKeys(keys);
+                }
+            }
+        }
+
+        (function(){
+            loadKeys();
+        })();
+    }
+    ko.applyBindings(new KeyModel(), $('#keys-wrapper')[0]);
+
+   /* var hkW = _h - $('#header').width();
+    $('#keys-wrapper').css('min-height',hkW);
+
+    $(window).resize(function(e){
+        _h = $(window).height();
+        hkW = _h - $('#header').width();
+        $('#keys-wrapper').css('min-height',hkW);
+    });*/
+});
+</script>

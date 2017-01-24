@@ -1,0 +1,15 @@
+body { font-size: 11pt; font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif; font-variant: normal; line-height: 16px; text-decoration: none; text-align: left; word-spacing: -1px; vertical-align: top; }
+p { font-size: 9.5pt; font-weight: lighter; font-style: normal; font-variant: normal; line-height: 13pt; text-decoration: none; text-transform: none; text-align: left; }
+td { }
+a:link { color: #002ac5; font-size: 9.5pt; font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif; line-height: 13pt; text-decoration: none; text-align: left; vertical-align: top; }
+a:visited { color: #2b89b1; font-size: 9.5pt; font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif; line-height: 13pt; text-decoration: none; text-align: left; vertical-align: top; }
+a:hover { color: #290089; font-size: 9.5pt; font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif; line-height: 13pt; text-decoration: none; text-align: left; vertical-align: top; }
+a:active { color: #2b89b1; font-size: 9.5pt; font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif; line-height: 13pt; text-decoration: none; text-align: left; vertical-align: top; }
+.class_link_small_bold { color: #002ac5; font-size: 13px; font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif; font-weight: bold; line-height: 10pt; text-decoration: none; text-align: left; }
+.class_small_footer_tag { color: #636363; font-size: 7pt; font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif; line-height: 10pt; text-decoration: none; text-align: left; vertical-align: top; }
+.class_people_heds { color: #002ac5; font-size: 11pt; font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif; font-weight: bold; line-height: 11pt; text-align: left; }
+.class_titles { font-size: 9pt; font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif; font-style: italic; text-align: left; }
+.class_library_titles { color: #002ac5; font-size: 10pt; font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif; line-height: 12pt; text-align: left; }
+.class_pullquotes { color: #002ac5; font-size: 16pt; font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif; font-weight: normal; line-height: 42pt; text-align: right; }
+.class_intro { font-size: 14pt; font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif; line-height: 22pt; text-align: left; }
+.class_hello_doctor { color: #290089; font-size: 9pt; font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif; }

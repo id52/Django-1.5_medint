@@ -1,0 +1,49 @@
+{
+  "path": "/static/models/male/",
+  "scale": [0.1, 0.1, 0.1],
+  "origin": [0, 9.5, -0.75],
+  "camdist": -19,
+  "angle": [-0.5, 0.626],
+  "rendermode": 0,
+
+  "markers":
+  [
+    {"name": "Left Eye", "pos": [3.2447, 166.7120, -0.6624, 1.0]},
+    {"name": "Left Second Toe", "pos": [6.7754, 1.9919, 4.1942, 1.0]},
+    {"name": "Left Shoulder", "pos": [15.7120, 145.1165, -17.4509, 1.0]},
+    {"name": "Right Knee", "pos": [-7.0754, 50.9919, -4.1942, 1.0]}
+  ],
+
+  "scene":
+  {
+    "skin":
+    [
+      {
+        "file": "body.json",
+        "color": [1.0, 0.88, 0.77, 0.3],
+        "layer": 100,
+        "material": [0.05, 20]
+      }
+    ],
+
+    "muscles":
+    [
+      {
+        "file": "muscles.json",
+        "color": [0.8, 0.1, 0.1, 0.15],
+        "layer": 90,
+        "material": [0.5, 50]
+      }
+    ],
+
+    "skeleton":
+    [
+      {
+        "file": "bones.json",
+        "color": [0.8, 0.8, 0.8, 0.5],
+        "layer": 40,
+        "material": [0.5, 50]
+      }
+    ]
+  }
+}

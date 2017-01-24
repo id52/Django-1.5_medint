@@ -1,0 +1,306 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Exploring the female body</title>
+    </head>
+    <body style="margin: 0; overflow: hidden;">
+        <span class="backdrop full" style="z-Index:-2;
+            background: -moz-linear-gradient(top, #000000 0%, #333333 70%, #dddddd 100%);
+            background: -webkit-linear-gradient(top, #000000 0%,#222222 70%, #666666 100%);
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;">
+        </span>
+
+        <svg id="canvassvg" xmlns="http://www.w3.org/2000/svg" version="1.1" 
+            style="width:100%; height:100%; position:absolute; top:0px; left:0px; z-index:1;">
+            <line x1="-200" y1="0" x2="-200" y2="100000" stroke="white" stroke-width="1" data-bind="attr: {x1: xray_left, x2: xray_left}"/>
+            <line x1="-500" y1="0" x2="-500" y2="100000" stroke="white" stroke-width="1" data-bind="attr: {x1: xray_right, x2: xray_right}"/>
+            <line x1="0" y1="-200" x2="100000" y2="-200" stroke="white" stroke-width="1" data-bind="attr: {y1: xray_top, y2: xray_top}"/>
+            <line x1="0" y1="-400" x2="100000" y2="-400" stroke="white" stroke-width="1" data-bind="attr: {y1: xray_bottom, y2: xray_bottom}"/>
+        </svg>
+
+        <canvas id="canvas" class="full" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 0;"></canvas>
+
+        <div style="z-index: 2; position: absolute; left: 10px; top: 10px; color: white;">
+            <table bgcolor="#555555" style="border: 2px solid white; border-radius: 15px;" data-bind="foreach: objLayer">
+                <tr>
+                    <td data-bind="text: name"></td><td><input type="range" min="0" max="1" value ="1" step="0.01" data-bind="value: alpha"/></td><td style="min-width: 36px;" data-bind="text: alpha"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="z-index: 2; position: absolute; left: 10px; bottom: 10px; color: white;">
+            <table bgcolor="#555555" style="border: 2px solid white; border-radius: 15px;" data-bind="foreach: markers">
+                <tr>
+                    <td>
+                        <button type="button" style="width: 175px;" data-bind="click: $parent.selectionClicked, text: $data, attr: {name: $data}"></button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="z-index: 2; position: absolute; left: 40%; top: 40%; width: 20%; height: 100px; background: #555555; border: 2px solid white; border-radius: 15px;" data-bind="visible: loadbar_visible">
+            <div style="position: absolute; left: 10%; top: 20%;color: white;">
+                Loading...
+            </div>
+            <div style="position: absolute; left: 10%; top: 50%; width: 0%; height: 30%; border 2px solid white; background: grey; color: white;" data-bind="style: {width: loadbar_width}">
+                <div style="position: absolute; left: 10px; top: 5px;" data-bind="text: loadbar_text"></div>
+            </div>
+        </div>
+
+        <div style="z-index: 2; position: absolute; right: 10px; top: 10px; color: white; button{vertical-align: middle; text-align: center;}">
+            <table bgcolor="#555555" style="border: 2px solid white; border-radius: 15px;">
+                <tr>
+                    <td align="right">
+                        <button type="button" data-bind="click: camMoveOut">&minus;</button>
+                    </td>
+                    <td align="center">
+                        <button type="button" data-bind="click: camMoveUp">&uarr;</button>
+                    </td>
+                    <td align="left">
+                        <button type="button" data-bind="click: camMoveIn">&plus;</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left">
+                        <button type="button" data-bind="click: camMoveLeft">&larr;</button>
+                    </td>
+                    <td align="center">
+                        <button type="button" data-bind="click: camMoveDown">&darr;</button>
+                    </td>
+                    <td align="right">
+                        <button type="button" data-bind="click: camMoveRight">&rarr;</button>
+                    </td>
+                </tr>
+                <tr><td>fps:</td><td colspan="2" align="right" data-bind="text: currFps"></td></tr>
+                <tr><td>dist:</td><td colspan="2" align="right" data-bind="text: camDist().toFixed(3)"></td></tr>
+                <tr><td>x:</td><td colspan="2" align="right" data-bind="text: camOriginX().toFixed(3)"></td></tr>
+                <tr><td>y:</td><td colspan="2" align="right" data-bind="text: camOriginY().toFixed(3)"></td></tr>
+                <tr><td>z:</td><td colspan="2" align="right" data-bind="text: camOriginZ().toFixed(3)"></td></tr>
+                <tr><td>pan:</td><td colspan="2" align="right" data-bind="text: objAnglePan().toFixed(3)"></td></tr>
+                <tr><td>tilt:</td><td colspan="2" align="right" data-bind="text: objAngleTilt().toFixed(3)"></td></tr>
+                <tr><td colspan="3" align="center"><button type="button" data-bind="click: setOrigin">set origin</button></td></tr>
+                <tr><td colspan="3" align="center"><button type="button" data-bind="click: switchModel">switch model</button></td></tr>
+            </table>
+        </div>
+
+        <div style="width: 200px; height: 110px; z-index: 2; position: absolute; right: 10px; bottom: 10px; color: white; border: 2px solid white; border-radius: 15px; background-color: #555555; text-align: center;">
+            <p style="margin: 10px;">Use numbers 1 to 5 to change the rendering mode and your arrow keypad to pan. In mode 5, the window can be moved with WASD.</p>
+        </div>
+
+        <script id="VS_BASE" type="text/x-vertex">
+            #ifdef GL_ES
+            precision highp float;
+            #endif
+
+            uniform mat4 u_mvp;
+            uniform mat3 u_model;
+
+            attribute vec3 a_position;
+            attribute vec2 a_texcoord;
+            attribute vec3 a_normal;
+
+            varying vec2 v_texcoord;
+            varying vec3 v_normal;
+
+            void main(void)
+            {
+               v_texcoord = a_texcoord;
+               v_normal = u_model * a_normal;
+               gl_Position = u_mvp * vec4(a_position, 1.0);
+            }
+        </script>
+
+        <script id="FS_BASE" type="text/x-fragment">
+            #ifdef GL_ES
+            precision mediump float;
+            #endif
+
+            uniform mat3 u_model;
+            uniform vec4 u_color;
+            uniform vec2 u_material;
+            uniform sampler2D u_diffuse_sampler;
+            //uniform sampler2D u_normal_sampler;
+
+            varying vec2 v_texcoord;
+            varying vec3 v_normal;
+
+            void main(void) {
+                // Simple, soft directional lighting.
+                vec4 fetch = texture2D(u_diffuse_sampler, v_texcoord);
+                fetch.rgb = pow(fetch.rgb, vec3(2.2));
+            //    vec3 norm = texture2D(u_normal_sampler, v_texcoord).rgb;
+            //    vec3 normal = normalize(u_model*(norm*2.0-1.0));
+                vec3 normal = normalize(v_normal);
+                vec3 light_vec = normalize(vec3(-0.25, -0.25, 1.0));
+                vec3 halfvec = (light_vec+vec3(0.0, 0.0, 1.0))/2.0;
+                float spec = dot(halfvec, normal);
+                spec = pow(max(spec, 0.0), u_material.y);
+                float light = max(dot(normal, light_vec), 0.0);
+                gl_FragData[0] = vec4(vec3(light*light)*fetch.rgb+vec3(spec*u_material.x), u_color.a*fetch.a);
+                gl_FragData[0].rgb = pow(gl_FragData[0].rgb, vec3(1.0/2.2));
+            }
+        </script>
+
+        <script id="VS_XRAY" type="text/x-vertex">
+            #ifdef GL_ES
+            precision highp float;
+            #endif
+
+            uniform mat4 u_mvp;
+            uniform mat3 u_model;
+
+            attribute vec3 a_position;
+            attribute vec2 a_texcoord;
+            attribute vec3 a_normal;
+
+            varying vec2 v_texcoord;
+            varying vec3 v_normal;
+
+            void main(void)
+            {
+               v_texcoord = a_texcoord;
+               v_normal = u_model * a_normal;
+               gl_Position = u_mvp * vec4(a_position, 1.0);
+            }
+        </script>
+
+        <script id="FS_XRAY" type="text/x-fragment">
+            #ifdef GL_ES
+            precision mediump float;
+            #endif
+
+            uniform mat3 u_model;
+            uniform vec4 u_color;
+            uniform sampler2D u_diffuse_sampler;
+
+            varying vec2 v_texcoord;
+            varying vec3 v_normal;
+
+            void main(void)
+            {
+                vec3 normal = normalize(v_normal);
+                float backlight = 1.0-dot(normal, vec3(0.0, 0.0, 1.0));
+                gl_FragData[0] = vec4(vec3(backlight)*u_color.rgb*u_color.a, u_color.a);
+            }
+        </script>
+
+        <script id="VS_XRAY2" type="text/x-vertex">
+            #ifdef GL_ES
+            precision highp float;
+            #endif
+
+            uniform mat4 u_mvp;
+            uniform mat3 u_model;
+
+            attribute vec3 a_position;
+            attribute vec2 a_texcoord;
+            attribute vec3 a_normal;
+
+            varying vec2 v_texcoord;
+            varying vec3 v_normal;
+
+            void main(void)
+            {
+               v_texcoord = a_texcoord;
+               v_normal = u_model * a_normal;
+               gl_Position = u_mvp * vec4(a_position, 1.0);
+            }
+        </script>
+
+        <script id="FS_XRAY2" type="text/x-fragment">
+            #ifdef GL_ES
+            precision mediump float;
+            #endif
+
+            uniform mat3 u_model;
+            uniform vec4 u_color;
+            uniform sampler2D u_diffuse_sampler;
+
+            varying vec2 v_texcoord;
+            varying vec3 v_normal;
+
+            void main(void)
+            {
+                vec3 normal = normalize(v_normal);
+                float backlight = 1.0-dot(normal, vec3(0.0, 0.0, 1.0));
+                gl_FragData[0] = vec4(vec3(backlight)*u_color.rgb, backlight*u_color.a);
+            }
+        </script>
+
+        <script id="VS_XRAY3" type="text/x-vertex">
+            #ifdef GL_ES
+            precision highp float;
+            #endif
+
+            uniform mat4 u_mvp;
+            uniform mat3 u_model;
+
+            attribute vec3 a_position;
+            attribute vec2 a_texcoord;
+            attribute vec3 a_normal;
+
+            varying vec2 v_texcoord;
+            varying vec3 v_normal;
+
+            void main(void)
+            {
+               v_texcoord = a_texcoord;
+               v_normal = u_model * a_normal;
+               gl_Position = u_mvp * vec4(a_position, 1.0);
+            }
+        </script>
+
+        <script id="FS_XRAY3" type="text/x-fragment">
+            #ifdef GL_ES
+            precision mediump float;
+            #endif
+
+            uniform mat3 u_model;
+            uniform vec4 u_color;
+            uniform sampler2D u_diffuse_sampler;
+
+            varying vec2 v_texcoord;
+            varying vec3 v_normal;
+
+            void main(void)
+            {
+                vec3 normal = normalize(v_normal);
+                float backlight = 1.0-dot(normal, vec3(0.0, 0.0, 1.0));
+                gl_FragData[0] = vec4(vec3(0.3, 0.3, 0.4)*u_color.rgb*u_color.a, backlight*backlight*u_color.a);
+            }
+        </script>
+
+        <script type="text/javascript" src="/static/js/webgl/gl-matrix-min.js"></script>
+        <script type="text/javascript" src="/static/js/webgl/knockout-2.2.0.js"></script>
+
+        <script type="text/javascript" src="/static/js/webgl/loadbar.js"></script>
+        <script type="text/javascript" src="/static/js/webgl/base.js"></script>
+        <script type="text/javascript" src="/static/js/webgl/webgl.js"></script>
+        <script type="text/javascript" src="/static/js/webgl/loader.js"></script>
+        <script type="text/javascript" src="/static/js/webgl/camera.js"></script>
+        <script type="text/javascript" src="/static/js/webgl/renderer.js"></script>
+        <script type="text/javascript" src="/static/js/webgl/initialization.js"></script>
+        <script type="text/javascript" src="/static/js/webgl/viewmodel.js"></script>
+        <script type="text/javascript" src="/static/js/webgl/markers.js"></script>
+        <script type="text/javascript" src="/static/js/webgl/controls.js"></script>
+        <script type="text/javascript" src="/static/js/webgl/borders.js"></script>
+
+        <script type="text/javascript">
+            var currmodel = 0;
+            loadScene("/static/models/female.json");
+            function toggleModel()
+            {
+                destroyScene();
+                currmodel += 1;
+                currmodel %= 2;
+                if(currmodel == 0)
+                    loadScene("/static/models/female.json");
+                else
+                    loadScene("/static/models/male.json");
+            }
+        </script>
+    </body>
+</html>

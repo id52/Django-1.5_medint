@@ -1,0 +1,15 @@
+test:
+  pre:
+    - python manage.py syncdb --noinput
+  override:
+    - python manage.py test medint
+
+deployment:
+  staging:
+    branch: dev
+    heroku:
+      appname: mi-staging
+  production:
+    branch: master
+    heroku:
+      appname: mi-production

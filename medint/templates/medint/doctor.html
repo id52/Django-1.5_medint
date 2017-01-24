@@ -1,0 +1,555 @@
+{% extends "medint/logged_in.html" %}
+
+{% load medint %}
+{% load messaging %}
+
+
+
+{% block topmenu %}
+    <ul>
+        <li><a href="#message" id="btn-message">Messages</a></li>
+        <li><a href="#patients" id="btn-patients">Patients</a></li>
+        <li><a href="#documents" id="btn-documents">Your Legals</a></li>
+    </ul>
+{% endblock %}
+
+{% block mainmenu %}
+    <div id="menuIcons" class="for3">
+        <div id="icon-mi-msg" class="iconsimg">
+            <a href="#message"><img src="/static/img/dashboard/icons/icon-mi-message.png" alt=""/></a>
+        </div>
+        <div id="icon-mi-patient" class="iconsimg">
+            <a href="#patients"><img src="/static/img/dashboard/icons/icon-mi-patient.png" alt=""/></a>
+        </div>
+        <div id="icon-mi-documents" class="iconsimg last-child">
+            <a href="#documents"><img src="/static/img/dashboard/icons/icon-mi-documents.png" alt=""/></a>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+
+    {% messaging user %}
+
+    <section class="ui-panel hidden" id="accounts">
+        <div class="topmenu">
+            <div class="menuleft">
+                <h4>Account settings</h4>
+            </div>
+            <div class="menuright">
+
+            </div>
+         </div>
+
+        <div class="panel-column1">
+            <div class="folder-list" id="nav-settings">
+                <ul>
+                    <li class="active">
+                        <a href="#" id="btn-personal-settings">Personal information</a></span>
+                    </li>
+                    <li>
+                        <a href="#" id="btn-password-settings" >Email &amp; password</a></span>
+                    </li>
+                    <li>
+                        <a href="#" id="btn-notifications-settings">Notifications</a></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="settings-col">
+            <div class="personal-settings">
+            <form>
+                <div class="mainUserInfo">
+
+                   <div class="content">
+                        <div class="userPicture"><img src="/static/img/dashboard/big-empty-avatar.jpg" alt=""></div>
+                        <h2>{{ user.user_info.first_name }} {{ user.user_info.last_name }}</h2>
+                       <p class="doctorMail">{{ user.user_info.email }}</p>
+                       <div class="attach-file-block">
+                           <span class="attach-msg">To upload photo, drag &amp; drop here, or select files from your computer...</span>
+                       </div>
+                   </div>
+               </div>
+                <div class="personalInfoData">
+                    <h2>Update personal information</h2>
+                    <div class="colLeft">
+                        <label for="phone">Phone number</label><input type="text" value="" id="phone" data-bind="value:userphone"/>
+                        <label for="city">City</label><input type="text" value="" id="city" data-bind="value:usercity"/>
+                        <label for="zipcode">Zip Code</label><input type="text" value="" id="zipcode" data-bind="value:userzipcode"/>
+                    </div>
+                    <div class="colRight">
+                        <label for="address">Address</label><input type="text" value="" id="address" data-bind="value:useraddress"/>
+                        <label for="state">State</label><input type="text" value="" id="state" data-bind="value:userstate"/>
+                    </div>
+
+                </div>
+                <div class="button-form"><input type="submit" value="Update" class="btn-write" id="btn-update-info"></div>
+            </form>
+             </div>
+            <div class="password-settings hidden">
+                    <form>
+                        <div class="mainUserInfo">
+                            <div class="content">
+                                <div class="userPicture"><img src="/static/img/dashboard/big-empty-avatar.jpg" alt=""></div>
+                                <h2>{{ user.user_info.first_name }} {{ user.user_info.last_name }}</h2>
+                                <p class="doctorMail">{{ user.user_info.email }}</p>
+                            </div>
+
+                        </div>
+                        <div class="personalInfoData">
+
+                        <div class="colLeft">
+                            <h2>Update  password</h2>
+                            <label for="old-password">Old password</label><input type="password" id="old-password" data-bind="value:userpwd"/>
+                            <label for="new-password">New password</label><input type="password" id="new-password" value=""/>
+                            <label for="confirm-password">Confirm password</label><input type="password" id="confirm-password" value=""/>
+                            <input type="submit" value="Update" class="btn-write" id="btn-update-password">
+                        </div>
+                        </div>
+                    </form>
+            </div>
+            <div class="notifications-settings hidden">
+
+                    <div class="mainUserInfo">
+                        <div class="content">
+                            <div class="userPicture"><img src="/static/img/dashboard/big-empty-avatar.jpg" alt=""></div>
+                            <h2>{{ user.user_info.first_name }} {{ user.user_info.last_name }}</h2>
+                            <p class="doctorMail">{{ user.user_info.email }}</p>
+                        </div>
+                        </div>
+                        <div class="personalInfoData">
+                            <div class="colLeft">
+                                <h2>Email notifications</h2>
+                                <label for="intake">Intake</label><input type="checkbox" id="intake" value=""><span class="checkbox-label">When a part of intake isn't finish</span></input>
+                                <label for="discussions-respond">Discussions</label><input type="checkbox" id="discussions-respond" value="" checked="checked"><span class="checkbox-label">When someone responds to a discussion with you</span></input><br/>
+                                <div class="checkbox-line"><input type="checkbox" id="discussion-folder" value=""><span class="checkbox-label">When someone create a new discussion about your folder</span></input></div>
+                                <label for="chart-review">Chart review</label><input type="checkbox" id="chart-review" value=""><span class="checkbox-label">When someone shares a new report</span></input>
+                                <label for="message-notification">Messages</label><input type="checkbox" id="message-notification" value="" checked="checked"><span class="checkbox-label">When someone post a new message</span></input>
+                                <div class="submit-line"><input type="submit" value="Update" class="btn-write" id="btn-update-notifications"></div>
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    {% patientlist user %}
+
+    <section class="ui-panel hidden" id="documents">
+        <div class="contentViewer">
+            <div id="contentTable">
+                <h2>Your Legal Documents</h2>
+                <table id="document-list" class="tables">
+                    <thead class="topTable"><tr>
+                        <th class="column date">Date</th>
+                        <th class="column desc">Legal</th>
+                        <th class="column">State</th>
+                    </tr></thead>
+                    <tbody data-bind="foreach: dd">
+                    <tr>
+                        <td data-bind="text: date" class="column date"></td>
+                        <td data-bind="text: title" class="column desc desc-file"></td>
+                        <td data-bind="text: state" class="column state state-ok"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <section class="ui-panel hidden" id="profile">
+
+
+        <form action='/doctor/uploadPhoto' method='post' enctype='multipart/form-data' name="form_update_cover" id="form_update_cover">
+            <div id="update-cover" class="modal hide">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3>Update your cover</h3>
+                </div>
+                <div class="attach-file-block" id='dropzone_cover'>
+                    <div class="attach-msg" >
+
+
+                            <img id='img_cover' width='100'></img>
+                            <img id='loadImgCover' src="/static/img/ajax-loader.gif" style="visibility:hidden" width='50'></img>
+
+                              <p id="upload_cover" class="hidden"></p>
+                              <p id="filereader_cover"></p>
+                              <p id="formdata_cover"></p>
+
+                        <div id='select_file_cover'>
+                            <h3>Drag your photo here.</h3>
+                            <p>Or you can also</p>
+                            <p>select file from your computer</p>
+                            <input type="file" name="cover">
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type='button' class='btn-write' onclick="sendFormCover();return false;">Update</button>
+                 </div>
+            </div>
+        </form>
+
+
+
+
+
+        <form action='/doctor/uploadPhoto' method='post' enctype='multipart/form-data' name="form_update_photo" id="form_update_photo">
+            <div id="update-thumb" class="modal hide">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3>Update your profile picture</h3>
+                </div>
+                <div class="attach-file-block" id="dropzone_photo">
+                    <div class="attach-msg">
+                            <img id='img_photo' width='100'></img>
+                            <img id='loadImgPhoto' src="/static/img/ajax-loader.gif" style="visibility:hidden" width='50'></img>
+
+                              <p id="upload_photo" class="hidden"></p>
+                              <p id="filereader_photo"></p>
+                              <p id="formdata_photo"></p>
+
+                        <div id='select_file_photo'>
+                            <h3>Drag your photo here.</h3>
+                            <p>Or you can also</p>
+                            <p>select file from your computer</p>
+                            <input type="file" name="photo">
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                        <button type='button' class='btn-write' onclick="sendFormPhoto();return false;">Update</button>
+                 </div>
+            </div>
+        </form>
+<script src='/static/js/doctor.js'></script>
+
+        <div id="wrapper">
+            <div class="pagelet-profile">
+                    <div class="headerwrap">
+                        <div class="content">
+                            <h3>Dr. {{ user.user_info.first_name }} {{ user.user_info.last_name }}</h3>
+                            <div style="float:right;margin-top: 2px">
+                                <div class="btn btn-small btn-header-msg btn-info">Send a message</div>
+                                <div class="btn btn-small btn-header-video">Launch video conference</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="cover">
+                        <div class="btn-cover">Change your cover</div>
+                        <img id="getCover" src="/doctor/getCover?r={% now "jS F Y H:i:s" %}" alt="Cover"/>
+                    </div>
+
+
+
+                    <div class="leftColumn">
+                        <div class="profilePicThumb">
+                            <div class="btn-edit-Thumb"></div>
+                            <img src="/doctor/getPhoto?r={% now "jS F Y H:i:s" %}" alt="" />
+                        </div>
+
+
+
+
+                        <div class="contactDetails">
+                            <div class="blueButton"><a href="#">Follow</a></div>
+                            <div class="greyButton" style="margin-left: 5px;"><a href="#">Send a message</a></div>
+                            <div class="userInfo">
+                                <ul>
+                                    <li class="address">5th Duane Street, New York City</li>
+                                    <li class="phone">555-0149-105</li>
+                                    <li class="website">www.doctor-scarter.com</li>
+                                    <li class="map"><a href="#">Get direction on Google Map</a></li>
+                                </ul>
+                            </div>
+                            <div class="leftBlock">
+                                <h3 class="title">Work hours</h3>
+                                <table>
+                                    <tr>
+                                        <th class="day">Mon.</th>
+                                        <th class="hours">9.00 am - 8.00 pm</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="day">Tues.</th>
+                                        <th class="hours">9.00 am - 8.00 pm</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="day">Wedn.</th>
+                                        <th class="hours">9.00 am - 9.00 pm</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="day">Thu.</th>
+                                        <th class="hours">9.00 am - 2.30 pm</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="day">Sat.</th>
+                                        <th class="hours">9.00 am - 12.00 am</th>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="leftBlock domain">
+                                <h3 class="title">Domain expertise</h3>
+                                <ul>
+                                    <li class="badge">Neurology</li>
+                                    <li class="badge">Rheumatology</li>
+                                    <li class="badge">Neurosurgery</li>
+                                    <li class="badge">Endocrinology</li>
+                                </ul>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="colRight">
+                            <div class="headerProfile">
+                                <div class="introProfile">
+                                    <h3 class="name">Dr. {{ user.user_info.first_name }} {{ user.user_info.last_name }}</h3>
+                                    <p>MEDICAL OFFICE ASSISTANT, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam risus dolor, adipiscing sed adipiscing feugiat. </p>
+                                    <p class="city">New York City, NY</p>
+                                </div>
+                                <div class="connectionReport">
+                                    <ul>
+                                        <li><span class="numbers">20</span><br/><span class="typeof">patients</span></li>
+                                        <li><span class="numbers">15</span><br/><span class="typeof">following</span></li>
+                                        <li><span class="numbers">10</span><br/><span class="typeof">posts</span></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <div class="mainContent">
+                                <ul class="navprofile">
+                                    <li id="btn-bio"><a href="#">Bio</a></li>
+                                    <li  id="btn-activities"><a href="#">Activities</a></li>
+                                    <li id="btn-location"><a href="#">Location</a></li>
+                                    <li id="btn-photos"><a href="#">Photos</a></li>
+                                </ul>
+
+                                <div id="activities">
+                                <div class="activityFeeds">
+                                    <div class="new-post">
+                                        <div class="profilePic"><img src="/static/img/profile/profile-avatar.jpg" width="55" height="55" alt=""/></div>
+                                        <form id="new-post-form">
+                                            <textarea cols="10" rows="3" placeholder="What's up ?"></textarea>
+                                            <div class="clearfix hidden">
+                                                <input type="button" value="Post" class="btn btn-info btn-small">
+                                            </div>
+
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <div class="content">
+                                                <div class="user-avatar"></div>
+                                                <div class="activity">
+                                                    <p><span class="currentUser">Dr. {{ user.user_info.first_name }} {{ user.user_info.last_name }}</span> is now connected with <span class="users">Dr. John Librett</span>, Cardiovasculary specialist</p>
+                                                    <div class="infos">
+                                                    <div class="socialslink">
+                                                        <a href="#">Like</a>
+                                                        <a href="#">Comment</a>
+                                                        <a href="#">Share</a>
+                                                    </div>
+
+                                                        <p class="time">44 minutes ago</p>
+
+                                                </div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                         <li>
+                                            <div class="content">
+                                                <div class="user-avatar"></div>
+                                                <div class="activity">
+                                                    <p><span class="currentUser">Dr. {{ user.user_info.first_name }} {{ user.user_info.last_name }}</span> is now connected with <span class="users">Dr. John Librett</span>, Cardiovasculary specialist</p>
+                                                    <div class="infos">
+                                                    <div class="socialslink">
+                                                        <a href="#">Like</a>
+                                                        <a href="#">Comment</a>
+                                                        <a href="#">Share</a>
+                                                    </div>
+
+                                                        <p class="time">1 hour ago</p>
+
+                                                </div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="content">
+                                                <div class="user-avatar"></div>
+                                                <div class="activity">
+                                                    <p><span class="currentUser">Dr. {{ user.user_info.first_name }} {{ user.user_info.last_name }}</span> is updated her work hour</p>
+                                                    <div class="infos">
+                                                    <div class="socialslink">
+                                                        <a href="#">Like</a>
+                                                        <a href="#">Comment</a>
+                                                        <a href="#">Share</a>
+                                                    </div>
+                                                        <p class="time">2 hours ago</p>
+                                                </div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="content">
+                                                <div class="user-avatar"></div>
+                                                <div class="activity">
+                                                    <p><span class="currentUser">Dr. {{ user.user_info.first_name }} {{ user.user_info.last_name }}</span></p>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam risus dolor, adipiscing sed adipiscing feugiat, rutrum sed libero. aptent taciti sociosqu ad litora torquent per conubia nostra.is updated her work hour</p>
+                                                    <div class="infos">
+                                                    <div class="socialslink">
+                                                        <a href="#">Like</a>
+                                                        <a href="#">Comment</a>
+                                                        <a href="#">Share</a>
+                                                    </div>
+                                                        <p class="time">4 hours ago</p>
+                                                </div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="activityRight">
+                                    <div class="blockRight">
+                                        <h3>Inner Circle</h3>
+                                        <ul>
+                                            <li>
+                                                <div class="content">
+                                                    <div class="user-avatar"></div>
+                                                    <div class="detailsCircle">
+                                                        <h4>Dr. Wanda Carter</h4>
+                                                        <p>Cardiovasculary specialist</p>
+                                                        <a href="#" class="connect">Connect</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="content">
+                                                    <div class="user-avatar"></div>
+                                                    <div class="detailsCircle">
+                                                        <h4>Dr. Eva Barton</h4>
+                                                        <p>Cardiovasculary specialist</p>
+                                                        <a href="#" class="connect">Connect</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="content">
+                                                    <div class="user-avatar"></div>
+                                                    <div class="detailsCircle">
+                                                        <h4>Dr. James Wong</h4>
+                                                        <p>Cardiovasculary specialist</p>
+                                                        <a href="#" class="connect">Connect</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="blockRight">
+                                        <h3>Work with</h3>
+                                        <ul>
+                                            <li style="border-bottom: none;"><img src="/static/img/profile/logo-MI.png" alt="Medical Intelligence"/></li>
+                                        </ul>
+                                    </div>
+                                    <div class="blockRight">
+                                        <h3>His network</h3>
+                                        <ul>
+                                            <li>
+                                                <div class="content">
+                                                    <div class="left"><h4 class="numbers">20</h4></div>
+                                                    <div class="details"><p>relations linked his to 500 professionals</p></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="content">
+                                                    <div class="left"><h4 class="numbers">12</h4></div>
+                                                    <div class="details"><p>new persons inMedical Intelligence Circle</p></div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                </div>
+                                <div id="bio" class="hidden">
+                                    <div class="bio-block">
+                                        <div class="content">
+                                            <h3>About</h3>
+                                            <h4 class="about">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam risus dolor, adipiscing sed adipiscing feugiat, rutrum sed libero. Nulla vel diam facilisis diam aliquet ornare. Quisque sed orci diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</h4>
+                                         </div>
+                                    </div>
+                                    <div class="bio-block">
+                                        <div class="content">
+                                            <h3>Experience</h3>
+                                                <ul>
+                                                    <li>
+                                                        <div class="content">
+                                                            <h4>Doctor </h4>
+                                                            <h5>New York, NY, USA</h5>
+                                                            <p class="date">september 2010 - today</p>
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>Nullam risus dolor, adipiscing sed adipiscing feugiat, rutrum sed libero. Nulla vel diam facilisis diam aliquet ornare. Quisque sed orci diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="content">
+                                                            <h4>Chief Clinique </h4>
+                                                            <h5>ZZZ Hospital - New York, NY, USA</h5>
+                                                            <p class="date">december 2006 - september 2010</p>
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>Nullam risus dolor, adipiscing sed adipiscing feugiat, rutrum sed libero. Nulla vel diam facilisis diam aliquet ornare. Quisque sed orci diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="content">
+                                                            <h4>Doctor </h4>
+                                                            <h5>ABC Hospital - New Jersey, NY, USA</h5>
+                                                            <p class="date">december 1999 - september 2006</p>
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>Nullam risus dolor, adipiscing sed adipiscing feugiat, rutrum sed libero. Nulla vel diam facilisis diam aliquet ornare. Quisque sed orci diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                        </div>
+                                    </div>
+                                    <div class="bio-block">
+                                        <div class="content">
+                                            <h3>Expertises</h3>
+                                            <ul>
+                                                <li class="badge">Neurology</li>
+                                                <li class="badge">Rheumatology</li>
+                                                <li class="badge">Neurosurgery</li>
+                                                <li class="badge">Endocrinology</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                     </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <script src="/static/patientlist/js/grid.js" type="text/javascript"></script>
+{#    <script src="/static/patientlist/js/functions.js" type="text/javascript"></script>#}
+
+{% endblock %}

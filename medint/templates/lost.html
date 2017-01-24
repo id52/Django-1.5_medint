@@ -1,0 +1,17 @@
+{% extends "template.html" %}
+
+{% block content %}
+    {# <div style="text-align: center"><a href="/"><img src="/static/img/logo_login.png"></a></div>#}
+
+
+        <div class="contentRub">
+            <h3>Lost you password ?</h3>
+            <p>Please submit your email here for instructions on recovering it.</p>
+            <form action="/lostpassword" method="post">{%csrf_token%}
+            <input name="email" type="text" placeholder="E-mail" style="margin-bottom: 10px;">
+            <input type="submit" value="recover" class="btn-signup">
+            </form>
+        </div>
+        </div>
+    </div>
+{% endblock %}

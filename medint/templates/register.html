@@ -1,0 +1,44 @@
+{% extends "template.html" %}
+{% block header %}
+<script type="text/javascript">
+$(function(){
+    $('#register_form').submit(function(){
+        var $form = $(this);
+        var data = $form.serializeObject();
+        $.ajax({
+            url:'/api/register',
+            type:'POST',
+            data : data,
+            dataType : 'json',
+            success : function(json){
+                if('ok' == json.result){
+                    location='/';
+                }
+                if('validation' == json.result){
+                    for (f in json.fields){
+                        $('<div class="error-description"/>').text(json.fields[f]).insertAfter($('[name="'+f+'"]', $form));
+                        $('[name="'+f+'"]', $form).addClass('error');
+                    }
+                } else if('error' == json.result){
+                    $.error(json.description);
+                }
+            }
+        });
+        return false;
+    });
+});
+</script>
+{% endblock %}
+{% block content %}
+    <div style="text-align: center; margin-top:-100px; height:100px"><a href="/"><img src="/static/img/logo_login.png" style=" border:none" ></a></div>
+    <div class="shadow" id="register-form" ><div>
+        <div class="panel-content">
+            <form action="/register" method="post" id="register_form">{% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="register">
+            </form>
+        </div>
+        <div class="panel-bg"></div>
+    </div></div>
+
+{% endblock %}

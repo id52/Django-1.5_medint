@@ -1,0 +1,8 @@
+.editor {height: 400px; width: 100%}
+
+.attachment-list{margin: 0; padding: 0}
+.attachment-list li{list-style: none; margin: 10px 0; overflow: hidden}
+.attachment-list .thumbnail{width:150px; height:150px; background-size: contain; background-repeat:no-repeat; background-position:center center; float: left}
+.attachment-list .attach-description{ float:left}
+
+#view-area{ overflow: hidden}

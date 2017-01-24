@@ -1,0 +1,30 @@
+{
+  "materials": {
+    "material__0": { "map_Kd": "Heart_diffuse.jpg" },
+    "material__1": { "map_Kd": "Heart2_diffuse.jpg" }  },
+  "decodeParams": {
+    "decodeOffsets": [-8318,132193,-15100,0,0,-511,-511,-511],
+    "decodeScales": [0.000994,0.000994,0.000994,0.000978,0.000978,0.001957,0.001957,0.001957]
+  },
+"urls": {
+    "2006ec64.female_circulatory_heart.utf8": [
+      { "material": "material__0",
+        "attribRange": [0, 653],
+        "indexRange": [5224, 325],
+        "bboxes": 6199,
+        "names": ["female_circulatory_heart"],
+        "lengths": [975]
+      }
+    ]
+,
+    "0762b360.female_circulatory_heart.utf8": [
+      { "material": "material__1",
+        "attribRange": [0, 1473],
+        "indexRange": [11784, 729],
+        "bboxes": 13971,
+        "names": ["female_circulatory_heart"],
+        "lengths": [2187]
+      }
+    ]
+  }
+}

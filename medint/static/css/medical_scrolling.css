@@ -1,0 +1,183 @@
+/* CSS Document */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
+}
+@font-face {
+    font-family: 'PTSansRegular';
+    src: url('PTS55F-webfont.eot');
+    src: url('PTS55F-webfont.eot?#iefix') format('embedded-opentype'),
+         url('PTS55F-webfont.woff') format('woff'),
+         url('PTS55F-webfont.ttf') format('truetype'),
+         url('PTS55F-webfont.svg#PTSansRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+body{margin:0;padding:0;background-image:url(../img/bkg-mi.jpg);background-repeat:repeat-x;background-color:#bbd8eb!important;}
+fieldset{margin:0;padding:0;border:0 none;}
+dl{float:left;width:600px;height:30px;}
+dt{float:left!important;width:10px!important;height:30px;}
+dd{float:left;width:590px;height:30px;}
+#background{width:100%;height:100%;overflow:hidden;background-size:auto;}
+#background img{position:absolute;z-index:1;overflow:hidden;}
+#scrolling{position:absolute;overflow:hidden;top:0;width:100%;height:100%;}
+#loader{position:absolute;width:162px;height:162px;z-index:20;}
+#content{position:absolute;width:100%;height:100%;}
+.ie8 section,.ie8 footer{display:block;}
+#main,#login,#register,#forget{position:absolute;top:200px;width:100%;/*margin:200px auto 0;*/min-height:200px;}
+#mainContent{position:relative;margin:0 auto;width:650px;}
+
+#logo,#logoP,#logoF{position:relative;margin-left:50px;background-image:url(../img/logo.png);background-repeat:no-repeat;width:400px;height:147px;z-index:10;}
+#logoF{cursor:pointer;}
+#logoP{position:absolute;top:100px;left:200px;background-image:url(/static/img/logo_login.png);width:272px;height:100px;cursor:pointer;}
+#loginb{position:relative;margin-left:100px;width:461px;height:130px;}
+#ctLogin{position:absolute;z-index:10;left:20px;text-align:center;color:#fff;margin-top:10px;width:420px;}
+form{float:left;text-align:left!important;}
+h2,p{font-family:Arial, Helvetica, sans-serif;font-size:24px;font-weight:bold;margin-top:6px;margin-bottom:10px;color:#0570c1!important;}
+p{font-size:16px;font-weight:normal;margin-top:10px;}
+h3{font-family:Arial, Helvetica, sans-serif;font-size:24px;font-weight:normal;margin-top:6px;margin-bottom:5px;text-shadow:0 1px 5px #4d728d;}
+#ctLogin p{font-family:Arial, Helvetica, sans-serif;font-size:14px;text-shadow:0 1px 5px #4d728d;color:#fff!important;}
+#box{position:absolute;top:0;z-index:8;float:left;width:461px;height:130px;background-color:#0570c1;opacity:0.4;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;filter:alpha(opacity=40);border:1px solid #000000;box-shadow:0 1px 0px #cee5f4!important; }
+.ie8 #box{background-color:rgba(5,112,93,0.4)!important;border:1px solid #000000;}
+input[type=text],input[type=password]{/*width:277px;*/height:30px!important;margin-bottom:0px !important;box-shadow:0 1px 0px #cee5f4!important;margin-right:11px;}
+input[type=text],input[type=password],#ctLogin input[type=text]{width:277px;}
+input[type=submit],input[type=button]{color:#fff;font-size:16px;font-weight:bold;}
+.btn-signup,.btn-login{background:url(/static/img/bt-signup.png)no-repeat scroll left top transparent;width:113px!important;height:40px;border:0;}
+.ie8 bn-signup,.ie8 input[type=button]{background-image:url(/static/img/bt-signup.png);background-color:transparent;}
+.btn-signup:hover,.btn-login:hover{background-position:0 -40px;}
+.btn-signup:active,.btn-login:active{background-position:0 -80px;}
+.shadow{position:relative;top:140px;background-image:url(/static/img/shadow.png);background-repeat:no-repeat;width:440px;height:46px;z-index:2;}
+#who{position:relative;margin-left:100px;width:461px;margin-top:70px;z-index:6;}
+footer,.ie8 footer{position:relative;margin:0 auto;width:450px;z-index:4}
+footer ul{float:left;list-style-type:none;width:110px;margin:0;}
+footer ul li{float:left;width:auto;margin-right:5px;border-right:1px solid #80a9c8;padding-right:5px;}
+footer ul li, #footer ul li>a{color:#80a9c8;text-shadow:0 1px 1px #fff;text-decoration:none;font-size:14px;}
+footer ul li>a:hover{transition:0.2s color;-webkit-transition:0.2s color;-o-transition:0.2s color;color:#0052a0;text-decoration:none;}
+.copyright{font-size:14px;color:#80a9c8!important;text-shadow:0 1px 1px #fff;margin-top:5px;}
+.test{position:relative;background-image:url(/static/img/circle.png);width:100%;height:100%;background-repeat:no-repeat;}
+#circle1,#circle2{position:absolute;z-index:2;overflow:hidden;}
+#circle2{z-index:3;}
+.bkg{position:fixed;z-index:1;background-image:url(/static/img/circle.png);width:100%;height:100%;background-repeat:no-repeat;background-position:top center;top:0;}
+.sky{position:absolute;width:100%;height:100%;background-image:url(/static/img/bkg-medical.jpg);background-repeat:no-repeat;min-height:500px;background-position:top center;z-index:0;}
+
+.alert{position:absolute;width:97.3%;z-index:11;}
+
+#loginPanel{position:relative;width:460px;height:460px;margin:0 auto;}
+#ctPanel{position:absolute;z-index:10;text-align:center;color:#fff;margin-top:10px;width:460px;height:440px;margin-top:10px;}
+#loginPanel h3{float:left;display:block;width:100%;font-size:30px;color:#fff;text-shadow:0 -1px 0 #25475e;text-align:center;padding-bottom:25px;border-bottom:1px solid #507a95;margin-top:30px;margin-bottom:0;background-image:url(/static/img/cadenas.png);background-repeat:no-repeat;background-position:78% 0%;}
+#ctPanel form{float:left;border-top:1px solid #bdd9ec;text-align:center;padding-top:60px;margin:0 auto;}
+#ctPanel input[type=text],#ctPanel input[type=password]{margin-left:86px;margin-top:20px;}
+#ctPanel input[type=submit],#ctPanel input[type=button],#ctRPanel input[type=submit],#ctRPanel input[type=button]{margin-left:170px;margin-top:20px;box-shadow:0px 3px 8px #8dbcdf;}
+#ctPanel input[type=submit],#ctPanel input[type=button]{margin-left:175px;}
+#loginbox{position:relative;z-index:2;border-radius:8px;width:460px;height:460px;background-color:#0570c1;opacity:0.4;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;filter:alpha(opacity=40);border:1px solid #000000;box-shadow:0 1px 0px #cee5f4!important;}
+#loginPanel .shadows{position:relative;top:20px!important;background-image:url(/static/img/shadow.png);background-repeat:no-repeat;width:440px;height:46px;z-index:11;}
+#loginPanel .links{position:absolute;bottom:10px;left:100px;color:#0052a0;text-shadow:0 1px 1px #dce9f2;}
+#loginPanel .linksF{position:absolute;bottom:10px;left:170px;color:#0052a0;text-shadow:0 1px 1px #dce9f2;}
+#loginPanel .links a.flinks,#loginPanel .linksF a.flinks,#ctRPanel .linksR a.flinks{text-decoration:none;margin-right:20px;color:#0052a0}
+#loginPanel .links>a.flinks:hover,#loginPanel .linksF>a.flinks:hover,#ctRPanel .linksR>a.flinks:hover{transition:0.2s color;-webkit-transition:0.2s color;-o-transition:0.2s color;-moz-transition:0.2s color;color:#5782ab;}
+#menu{position:absolute;left:70px;width:200px;bottom:40px;z-index:10;}
+#menu ul{list-style-type:none;float:left;margin-top:30px;}
+#menu ul li{margin-bottom:8px;}
+#menu ul li>a{font-family: Arial,Helvetica,sans-serif,'PTSansRegular';font-size:24px;color:#fff;text-shadow:0px 0px 10px #bfd5e4;}
+#menu ul li>a:hover{text-decoration:none;color:#2e728c;transition:0.4s color;-webkit-transition:0.4s color;-o-transition:0.4s color;-moz-transition:0.4s color;}
+
+
+/**************************/
+/**** Register section ****/
+/**************************/
+#registerPanel{position:relative;width:570px;height:450px;margin:0 auto;}
+#ctRPanel{position:absolute;z-index:10;text-align:center;color:#fff;margin-top:10px;width:100%;height:auto;margin-top:10px;}
+#ctRPanel .linksR{position:relative;top:40px;color:#0052a0;text-shadow:0 1px 1px #dce9f2;}
+#registerPanel h3{float:left;display:block;width:100%;font-size:30px;color:#fff;text-shadow:0 -1px 0 #25475e;text-align:center;padding-bottom:15px;border-bottom:1px solid #507a95;margin-top:20px;margin-bottom:0;line-height:120%;}
+#ctRPanel form{float:left;border-top:1px solid #bdd9ec;text-align:center;padding-top:10px;margin:0 auto;width:100%;}
+#msgRegister{float:left;border-top:1px solid #bdd9ec;text-align:center;padding-top:60px;margin:0 auto;color:#fff}
+#msgRegister p{color:#fff!important}
+#registerbox{position:relative;z-index:2;border-radius:8px;width:100%;height:450px;background-color:#0570c1;opacity:0.4;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;filter:alpha(opacity=40);border:1px solid #000000;box-shadow:0 1px 0px #cee5f4!important;}
+#ctRPanel input[type=text],#ctRPanel input[type=password]{width:172px;margin-bottom:20px!important;}
+.initial{width:80px!important;}
+.Rpassword,.Remail,.Rphone{width:228px!important;}
+#ctRPanel input[type=submit],#ctRPanel input[type=button]{margin-left:230px;margin-top:10px;}
+.littleT{font-size:20px;line-height:120%;}
+
+
+/*****************************/
+/**** Forgot pass section ****/
+/****************************/
+#forgetb{position:relative;margin-left:100px;width:461px;height:130px;}
+#forget #mainContent{width:650px;}
+#forgetb #box{height:150px;}
+
+.alert{position:absolute;z-index:20;width:100%;paddin:O!important;}
+
+
+/***** iPhone (landscape) *****/
+@media only screen and (max-width: 767px) {
+body{overflow:hidden!important;}
+html {
+     -webkit-text-size-adjust: 100%!important; overflow:hidden;
+}
+#mainContent{position:relative;margin:0 auto;width:96%;float:left;}
+#scrolling{position:absolute;overflow:auto;top:0;width:100%;height:auto;}
+#logo,#logoP,#logoF{position:relative;margin:0 auto;background-image:url(/static/img/logo_login.png);background-repeat:no-repeat;width:272px;height:147px;z-index:10;}
+dl{float:left;width:99%;height:auto!important;margin-bottom:0!important}
+dd{float:left;width:95%;height:auto!important;margin-left:5%;}
+#loginb{position:relative;float:left;left:5%;margin:0;width:95%;height:130px;display:none;}
+#ctLogin{position:absolute;z-index:10;float:none;left:4%;text-align:center;color:#fff;margin:0 auto;margin-top:10px;width:95%;}
+#ctLogin form{text-align:center!important;}
+#box{position:absolute;top:0;z-index:8;float:left;width:100%;min-height:190px;background-color:#0570c1;opacity:0.4;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;filter:alpha(opacity=40);border:1px solid #000000;box-shadow:0 1px 0px #cee5f4!important; }
+#who{position:relative;float:left;margin-left:8%;width:92%;margin-top:90px;z-index:6;}
+footer{position:relative!important;left:0!important;bottom:auto!important;margin-top:40px!important;margin:0 auto;width:92%;z-index:4;float:left;margin-left:8%;}
+footer ul{float:none;list-style-type:none;width:110px;margin:0 auto;}
+footer li:last-child{margin-right:0;border:0 none;}
+.copyright{display:block;clear:both;font-size:11px;text-align:center;}
+#main,#login,#register,#forget{position:relative;top:10px!important;width:100%;/*margin:200px auto 0;*/min-height:200px;float:left;overflow:hidden;height:auto}
+#register{overflow:auto!important}
+.bkg{position:fixed;z-index:0;background-image:none;width:0;height:0;background-repeat:no-repeat;background-position:top center;top:0;background-size:auto;}
+input[type=text],input[type=password],#ctLogin input[type=text]{width:80%;}
+#ctLogin input[type=text]{margin-bottom:10px!important;width:90%;}
+#loginPanel{position:relative;width:96%;height:460px;margin:0 auto;}
+#loginPanel .shadows{position:relative;top:0px!important;background-image:none;background-repeat:no-repeat;width:0;height:0;z-index:0;}
+#loginPanel .links,#loginPanel .linksF{position:relative;bottom:0!important;left:0!important;color:#0052a0;text-shadow:0 1px 1px #dce9f2;top:50px;height:20px;}
+#ctPanel{position:absolute;z-index:10;text-align:center;color:#fff;margin-top:10px;width:96%;height:440px;left:2%;}
+#ctPanel input[type=text],#ctPanel input[type=password]{position:relative;margin:0 auto;margin-top:20px;width:88%;}
+#ctPanel form{text-align:center!important;width:100%;padding-top:40px;}
+#ctPanel input[type=submit],#ctPanel input[type=button]{margin-left:0;}
+#loginbox{width:96%;height:390px;left:2%;}
+
+#registerPanel{width:96%!important;height:auto;}
+#ctRPanel input[type=text],#ctRPanel input[type=password]{float:left;width:26.1%;margin-bottom:20px!important;margin-left:0;margin-right:2%;}
+#ctRPanel input[type=submit],#ctRPanel input[type=button]{margin-left:90px;}
+.Rpassword,.Remail,.Rphone{float:left;width:43.8%!important;}
+.Rphone,input#password2,input#lastname{margin-right:0!important;}
+input#lastname{margin-right:0!important;margin-left:0;}
+.initial{width:30px;}
+#registerbox{width:100%;min-height:460px;}
+#forgetb{position:relative;margin-left:100px;width:90%;height:130px;}
+#forget #mainContent{width:98%;}
+.shadow{width:0;height:0;display:none;}
+#background img{/*width:100%;*/}
+#background{overflow:hidden;}
+#loginPanel h3{background-image:url(/static/img/cadenas.png);background-repeat:no-repeat;background-position:90% 0%;}
+.littleT{font-size:16px;}
+.titleRecover{font-size:24px!important;}
+form{width:100%;}
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	body{overflow:hidden!important;}
+#ctRPanel input[type=text],#ctRPanel input[type=password]{float:left;width:33%;margin-bottom:20px!important;}
+.Rpassword,.Remail,.Rphone{float:left;width:45%!important;}
+.Rphone,input#password2,input#lastname{margin-right:0!important;}
+#loginPanel h3{background-image:none;}
+}
+
+.hidden{display: none}

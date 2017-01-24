@@ -1,0 +1,135 @@
+
+{
+    "timeline":
+    {
+        "headline":"Malignant Melanoma",
+        "type":"default",
+		"text":"",
+		"startDate":"1993,1,10",
+        "date": [
+            {
+                "startDate":"1993,1,10",
+				"endDate":"",
+                "headline":"Malignant Melanoma, introduction",
+                "text":"<p>Introduction.</p>",
+                "asset":
+                {
+                    "media":"",
+                    "credit":"",
+                    "caption":""
+                }
+            },
+            {
+                "startDate":"1993,4,20",
+                "headline":"Malignant Melanoma, shoulder",
+                "text":"<p>Shoulder</p>",
+                "asset":
+                {
+                    "media":"",
+                    "credit":"",
+                    "caption":""
+                }
+            },
+			{
+                "startDate":"2000,3,26",
+                "headline":"Malignant Melanoma, left arm",
+                "text":"",
+                "asset":
+                {
+                    "media":"",
+                    "credit":"",
+                    "caption":""
+                }
+            },
+			{
+                "startDate":"2000,7,14",
+                "headline":"Malignant Melanoma, left temple with possible spread",
+                "text":"",
+                "asset":
+                {
+                    "media":"",
+                    "credit":"",
+                    "caption":""
+                }
+            },
+			{
+                "startDate":"2002,3,10",
+                "headline":"Malignant Melanoma, left side of nose",
+                "text":"",
+                "asset":
+                {
+                    "media":"",
+                    "credit":"",
+                    "caption":""
+                }
+            },
+
+			{
+                "startDate":"2007,10,4",
+                "headline":"Non-melanoma skin cancer",
+                "text":"",
+                "asset":
+                {
+                    "media":"",
+                    "credit":"",
+                    "caption":""
+                }
+            },
+			{
+                "startDate":"2009,6,25",
+                "headline":"Skin cancer risk factors",
+                "text":"",
+                "asset":
+                {
+                    "media":"",
+                    "credit":"",
+                    "caption":""
+                }
+            },
+			{
+                "startDate":"2010,4,12",
+                "headline":"Colonic polyps",
+                "text":"",
+                "asset":
+                {
+                    "media":"",
+                    "credit":"",
+                    "caption":""
+                }
+            },
+			{
+                "startDate":"2010,9,15",
+                "headline":"Benign prostatic hypertrophy",
+                "text":"",
+                "asset":
+                {
+                    "media":"",
+                    "credit":"",
+                    "caption":""
+                }
+            },
+			{
+                "startDate":"2011,1,15",
+                "headline":"Kidney cysts",
+                "text":"",
+                "asset":
+                {
+                    "media":"",
+                    "credit":"",
+                    "caption":""
+                }
+            },
+			{
+                "startDate":"2011,8,21",
+                "headline":"Thyroïd nodules",
+                "text":"",
+                "asset":
+                {
+                    "media":"",
+                    "credit":"",
+                    "caption":""
+                }
+            }
+        ]
+    }
+}

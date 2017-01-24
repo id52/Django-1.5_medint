@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Disease</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <style>
+        body{padding-top: 40px}
+        .controls input[type="text"]{width:80%; color: #555555; background-color: #CFE8FF}
+        .controls textarea{width:80%; height:300px; color: #555555; background-color: #CFE8FF}
+        #content{margin-top: 20px}
+    </style>
+
+{#    <style>#}
+{#        .info{float: left; width:700px; display: none}#}
+{#        .info textarea{width:100%; height:300px;}#}
+{#        #diseases{float: left; width: 200px; overflow: hidden}#}
+{#        #preview{width:100%; height: 300px; overflow: auto}#}
+{#    </style>#}
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/medint.js"></script>
+    <script src="/common/static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var i, ul = $('#diseases');
+            var form = $('#disease-form');
+            $("#q").keyup(function(){
+                $.ajax({
+                    url:'/api/disease?q=' + $(this).val(),
+                    dataType : 'json',
+                    success : function(json){
+                        if('ok' == json.result){
+                            ul.empty();
+                            if (json.data){
+                                for (i=0; i<json.data.length; i++){
+                                    var it = json.data[i];
+                                    ul.append($('<li />').html($('<a href="#">').text(it.name).data(it)));
+                                }
+                            }
+                            $('#content').show();
+                        }
+
+                    }
+
+                })
+            });
+            function updatePreview(){
+                $('#preview-text').html($('[name="description"]', form).val());
+{#                $('#preview').show();#}
+            }
+            $(document).on('keyup', '#disease-form textarea', updatePreview);
+            $(document).on('click', '#diseases a', function(){
+                var it = $(this).data();
+                $('#origin-link', form).text(it.link).attr('href', it.link);
+                $('[name="icd9"]', form).val(it.icd9);
+                $('[name="icd10"]', form).val(it.icd10);
+                $('[name="name"]', form).val(it.name);
+                $('[name="description"]', form).val($.trim(it.description));
+                $('#btn-edit').removeClass('active');
+                $('#btn-view').addClass('active');
+                form.hide();
+                $('#disease-title').text(it.name);
+                $('#preview-text').html($.trim(it.description));
+                $('#preview').show();
+{#                $('.info').show();#}
+                return false;
+            });
+            $(document).on('submit', '#disease-form', function(){
+                var form = $(this);
+                $.ajax({
+                    url:'/api/disease',
+                    dataType : 'json',
+                    type:'POST',
+                    data : form.serializeObject(),
+                    success : function(json){
+                        if('ok' == json.result){
+
+                            $('.alert').removeClass('alert-error').addClass('alert-success').text('Changes has been saved').show();//alert();
+{#                            ul.empty();#}
+{#                            if (json.data){#}
+{#                                for (i=0; i<json.data.length; i++){#}
+{#                                    var it = json.data[i];#}
+{#                                    ul.append($('<li />').html($('<a href="#">').text(it.name).data(it)));#}
+{#                                }#}
+{#                            }#}
+                        }
+
+                    }
+                });
+                return false;
+            });
+            $('#submit-disease-form').click(function(){
+                $('#disease-form').submit();
+                return false;
+            });
+            $('#btn-view a').click(function(){
+                $('#btn-edit').removeClass('active');
+                $('#btn-view').addClass('active');
+                form.hide();
+                $('#preview').show();
+
+                return false;
+            });
+            $('#btn-edit a').click(function(){
+                $('#btn-view').removeClass('active');
+                $('#btn-edit').addClass('active');
+                $('#preview').hide();
+                form.show();
+                return false;
+            });
+{#            $('.nav-pills a').click(false);#}
+
+        });
+    </script>
+</head>
+<body>
+<div class="alert hide"></div>
+<div class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="brand" href="/disease">Disease database</a>
+            <div class="navbar-search pull-right" >
+                <span class="icon-search"></span>
+                <input class="search-query" type="text" placeholder="Search..." id="q" name="q">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid hide" id="content">
+    <div class="row-fluid">
+
+        <div class="span2">
+            <ul id="diseases"></ul>
+        </div>
+
+        <div class="span10">
+            <ul class="nav nav-pills">
+                <li class="pull-left"><h1 id="disease-title"></h1></li>
+                <li class="pull-right" id="btn-edit">
+                    <a href="#">
+                        <span class="icon-edit"></span>
+                        Edit
+                    </a>
+                </li>
+                <li class="pull-right" id="btn-view">
+                    <a href="#">
+                        <span class="icon-home"></span>
+                        View
+                    </a>
+                </li>
+            </ul>
+
+            <form id="disease-form" class="hide form-horizontal">
+                <div class="clearfix control-group"><label class="control-label">Origin:</label><div class="controls"><a href="#" id="origin-link"></a></div></div>
+                <div class="clearfix control-group"><label class="control-label">ICD-9-CM</label><div class="controls"><input type="text" name="icd9"></div></div>
+                <div class="clearfix control-group"><label class="control-label">ICD-10</label><div class="controls"><input type="text" name="icd10"></div></div>
+                <div class="clearfix control-group"><label class="control-label">Name</label><div class="controls"><input type="text" name="name"></div></div>
+                <div class="clearfix control-group"><label class="control-label">Description</label><div class="controls"><textarea name="description"></textarea></div></div>
+
+
+                <div class="form-actions">
+                    <a id="submit-disease-form" class="btn btn-large btn-primary"><span class="icon-ok"></span>Save changes</a>
+                </div>
+            </form>
+
+            <div id="preview">
+                <div id="preview-text"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

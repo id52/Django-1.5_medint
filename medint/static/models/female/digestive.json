@@ -1,0 +1,19 @@
+{
+  "materials": {
+    "material__77": { "map_Kd": "DigestiveSystem_diffuse.jpg" }  },
+  "decodeParams": {
+    "decodeOffsets": [-2275,19405,-3432,0,0,-511,-511,-511],
+    "decodeScales": [0.004620,0.004620,0.004620,0.000978,0.000978,0.001957,0.001957,0.001957]
+  },
+"urls": {
+    "052bb589.female_digestive.utf8": [
+      { "material": "material__77",
+        "attribRange": [0, 20803],
+        "indexRange": [166424, 10263],
+        "bboxes": 197213,
+        "names": ["female_digestivesystem"],
+        "lengths": [30789]
+      }
+    ]
+  }
+}

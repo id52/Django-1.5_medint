@@ -1,0 +1,32 @@
+{
+  "materials":
+  {
+    "material__25": { "map_Kd": "Body_diffuse.jpg" },
+    "material__26": { "map_Kd": "Head_diffuse.jpg" }
+  },
+  "decodeParams": {
+    "decodeOffsets": [-3853,-63,-2044,0,0,-511,-511,-511],
+    "decodeScales": [0.011306,0.011306,0.011306,0.000978,0.000978,0.001957,0.001957,0.001957]
+  },
+"urls": {
+    "a6da9dd6.male_skin.utf8": [
+      { "material": "material__25",
+        "attribRange": [0, 11392],
+        "indexRange": [91136, 5552],
+        "bboxes": 107792,
+        "names": ["male_body"],
+        "lengths": [16656]
+      }
+    ]
+,
+    "a823a0ff.male_skin.utf8": [
+      { "material": "material__26",
+        "attribRange": [0, 4324],
+        "indexRange": [34592, 2100],
+        "bboxes": 40892,
+        "names": ["male_body"],
+        "lengths": [6300]
+      }
+    ]
+  }
+}

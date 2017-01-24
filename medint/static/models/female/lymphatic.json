@@ -1,0 +1,59 @@
+{
+  "materials": {
+    "material__20": { "map_Kd": "LymphaticSystem_diffuse.jpg" }  },
+  "decodeParams": {
+    "decodeOffsets": [-3693,553,-2082,0,0,-511,-511,-511],
+    "decodeScales": [0.010361,0.010361,0.010361,0.000978,0.000978,0.001957,0.001957,0.001957]
+  },
+"urls": {
+    "92c4274b.female_lymphatic.utf8": [
+      { "material": "material__20",
+        "attribRange": [0, 55294],
+        "indexRange": [442352, 25494],
+        "bboxes": 2726964,
+        "names": ["female_lymphaticsystem"],
+        "lengths": [76482]
+      }
+,
+      { "material": "material__20",
+        "attribRange": [518834, 55295],
+        "indexRange": [961194, 27647],
+        "bboxes": 2726970,
+        "names": ["female_lymphaticsystem"],
+        "lengths": [82941]
+      }
+,
+      { "material": "material__20",
+        "attribRange": [1044135, 55294],
+        "indexRange": [1486487, 27646],
+        "bboxes": 2726976,
+        "names": ["female_lymphaticsystem"],
+        "lengths": [82938]
+      }
+,
+      { "material": "material__20",
+        "attribRange": [1569425, 55294],
+        "indexRange": [2011777, 27646],
+        "bboxes": 2726982,
+        "names": ["female_lymphaticsystem"],
+        "lengths": [82938]
+      }
+,
+      { "material": "material__20",
+        "attribRange": [2094715, 55294],
+        "indexRange": [2537067, 27646],
+        "bboxes": 2726988,
+        "names": ["female_lymphaticsystem"],
+        "lengths": [82938]
+      }
+,
+      { "material": "material__20",
+        "attribRange": [2620005, 11259],
+        "indexRange": [2710077, 5629],
+        "bboxes": 2726994,
+        "names": ["female_lymphaticsystem"],
+        "lengths": [16887]
+      }
+    ]
+  }
+}

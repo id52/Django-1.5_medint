@@ -1,0 +1,34 @@
+{% extends "medint/logged_in.html" %}
+
+{% load medint %}
+{% load messaging %}
+
+{% block content %}
+
+    {% messaging user %}
+
+    <section class="ui-panel hidden" id="patients">
+        Patients
+    </section>
+    <section class="ui-panel hidden" id="documents">
+        <div class="contentViewer">
+            <div id="contentTable">
+                <h2>Your Legal Documents</h2>
+                <table id="document-list" class="tables">
+                    <thead class="topTable"><tr>
+                        <th class="column date">Date</th>
+                        <th class="column desc">Legal</th>
+                        <th class="column">State</th>
+                    </tr></thead>
+                    <tbody data-bind="foreach: dd">
+                    <tr>
+                        <td data-bind="text: date" class="column date"></td>
+                        <td data-bind="text: title" class="column desc desc-file"></td>
+                        <td data-bind="text: state" class="column state state-ok"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+{% endblock %}

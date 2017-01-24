@@ -1,0 +1,141 @@
+<gallery
+base = ""
+background = "#FFFFFF"
+banner = "#FFFFFF"
+text = "#000000"
+link = "#002AC5"
+alink = "#7E8BB8"
+vlink = "#B8B9BE"
+date = "8/29/12">
+	<sitename>MI INDEX IMAGE OPTIONS 1</sitename>
+	<photographer>heidi frieder : : art head : : 903.519.2339</photographer>
+	<contactinfo></contactinfo>
+	<email></email>
+	<security><![CDATA[]]> </security>
+
+<banner font = "Helvetica" fontsize = "1" color =  "#FFFFFF"> </banner>
+<thumbnail base ="thumbnails/" font = "Helvetica" fontsize = "6" color = "#FFFFFF" border = "0" rows = "3" col = "5"> </thumbnail> 
+<large base ="images/" font = "Helvetica" fontsize = "1" color = "#FFFFFF" border = "0"> </large>
+<images id = "images">
+
+<image
+path = "mi_web_hed_im_1.jpg"
+width = "450"
+height = "83"
+thumbpath = "mi_web_hed_im_1.jpg"
+thumbwidth = "75"
+thumbheight = "13">
+</image>
+
+
+<image
+path = "mi_web_hed_im_11.jpg"
+width = "450"
+height = "83"
+thumbpath = "mi_web_hed_im_11.jpg"
+thumbwidth = "75"
+thumbheight = "13">
+</image>
+
+
+<image
+path = "mi_web_hed_im_12.jpg"
+width = "450"
+height = "83"
+thumbpath = "mi_web_hed_im_12.jpg"
+thumbwidth = "75"
+thumbheight = "13">
+</image>
+
+
+<image
+path = "mi_web_hed_im_13.jpg"
+width = "450"
+height = "83"
+thumbpath = "mi_web_hed_im_13.jpg"
+thumbwidth = "75"
+thumbheight = "13">
+</image>
+
+
+<image
+path = "mi_web_hed_im_2.jpg"
+width = "450"
+height = "83"
+thumbpath = "mi_web_hed_im_2.jpg"
+thumbwidth = "75"
+thumbheight = "13">
+</image>
+
+
+<image
+path = "mi_web_hed_im_3.jpg"
+width = "450"
+height = "83"
+thumbpath = "mi_web_hed_im_3.jpg"
+thumbwidth = "75"
+thumbheight = "13">
+</image>
+
+
+<image
+path = "mi_web_hed_im_4.jpg"
+width = "450"
+height = "83"
+thumbpath = "mi_web_hed_im_4.jpg"
+thumbwidth = "75"
+thumbheight = "13">
+</image>
+
+
+<image
+path = "mi_web_hed_im_5.jpg"
+width = "450"
+height = "83"
+thumbpath = "mi_web_hed_im_5.jpg"
+thumbwidth = "75"
+thumbheight = "13">
+</image>
+
+
+<image
+path = "mi_web_hed_im_6.jpg"
+width = "450"
+height = "83"
+thumbpath = "mi_web_hed_im_6.jpg"
+thumbwidth = "75"
+thumbheight = "13">
+</image>
+
+
+<image
+path = "mi_web_hed_im_7.jpg"
+width = "450"
+height = "83"
+thumbpath = "mi_web_hed_im_7.jpg"
+thumbwidth = "75"
+thumbheight = "13">
+</image>
+
+
+<image
+path = "mi_web_hed_im_8.jpg"
+width = "450"
+height = "83"
+thumbpath = "mi_web_hed_im_8.jpg"
+thumbwidth = "75"
+thumbheight = "13">
+</image>
+
+
+<image
+path = "mi_web_hed_im_9.jpg"
+width = "450"
+height = "83"
+thumbpath = "mi_web_hed_im_9.jpg"
+thumbwidth = "75"
+thumbheight = "13">
+</image>
+
+</images>
+</gallery>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>Medical Intelligence App</title>
+
+    <link rel="stylesheet/less" type="text/css" href="/static/css/styles.less" />
+
+    <script type="text/javascript" src="{% if request.is_secure %}https{% else %}http{% endif %}://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="{% if request.is_secure %}https{% else %}http{% endif %}://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+    <script src="/static/js/knockout.js" type="text/javascript"></script>
+    <script src="/static/js/less.js" type="text/javascript"></script>
+    <script src="/static/js/jquery.mousewheel.js" type="text/javascript"></script>
+    <script src="/static/js/sammy.js" type="text/javascript"></script>
+    <script src="/static/js/amplify.min.js" type="text/javascript"></script>
+
+    <script src="/static/js/jscrollpane.min.js" type="text/javascript"></script>
+
+
+
+
+</head>
+
+<body>
+<div id="header">
+	<div id="logoTop"><img src="/static/img/dashboard/logo-MI.png" alt="" /></div>
+    <div id="headerctRight">
+    	<div id="msgBox" class="newMsg"><div id="notification"><a href="#">4</a></div></div>
+        <div id="ctDoctor">
+       		<div id="menuDoctor" class="wrapper-dropdown">
+                <div id="avatar"><div class="avatar-littleReflect"></div><img src="/static/img/dashboard/avatar.jpg" alt=""/></div>
+                <div class="nameDoctor">Dr. <span data-bind="foreach : tasks"><span data-bind="text:datasDoctor[0]"></span> <span data-bind="text:datasDoctor[1]"></span></span></div>
+                <div class="dropdown">
+                	<div id="topDropDown">
+                    <div class="big-avatar"><div class="bigReflect"></div><img src="/static/img/dashboard/patient-dashboard/big-avatar.jpg" alt=""/></div>
+                    <div class="doctorInfo">
+                    	<span data-bind="foreach : tasks">
+                        <h4>Dr. <span data-bind="text:datasDoctor[0]"></span> <span data-bind="text:datasDoctor[1]"></h4>
+                        <p class="doctorMail">drbucetizes@gmail.com</p>
+                        </span>
+                        <a href="#">My account</a> - <a href="#">Privacy</a>
+                        <div class="blueButton">
+                        	<a href="#">View profile</a>
+                        </div>
+                    </div>
+                    </div>
+                    <div id="footerDropDrown">
+                    	<div class="greyButton"><a href="#">Add account</a></div>
+                        <div class="greyButton" id="btnlogout"><a href="#">Logout</a></div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="content">
+	<div id="patientDashboard">
+        <div class="titleDashboard">
+            <h2>Patient Dashboard</h2>
+            <div id="btexpandPanel" class="collapsed"><a href="#" id="btnPatPanel">Collapse Panel</a></div>
+        </div>
+        <div id="patientInfo">
+            <div id="ctPatientInfo">
+                <div class="avatarPatient"><div class="avatar-mediumReflect"></div><img src="/static/img/dashboard/patient-dashboard/avatar-patient.jpg" alt=""/></div>
+                <div class="patientCivil">
+                <h3><span data-bind="foreach : tasksP"><span data-bind="text:datasPatient[0]"></span> <span data-bind="text:datasPatient[1]"></span></span></h3>
+                <p><span data-bind="foreach : tasksP"><span class="infoTitle">Age :</span> <span data-bind="text:datasPatient[2]"></span>  <span class="infoTitle">Sex :</span> <span data-bind="text:datasPatient[3]"></span><br/><span class="infoTitle">Weight :</span> <span data-bind="text:datasPatient[4]"></span>lbs<br/><span class="infoTitle">Ethnicity:</span> <span data-bind="text:datasPatient[5]"></span></span></p>
+                </div>
+            </div>
+        </div>
+        
+        	<div id="patientModules">
+                <div class="titleMenuDashboard">
+                	<div class="reflect"></div>
+                	<div class="icontitleDashboard"><img src="/static/img/dashboard/patient-dashboard/icon-problems-list.png" alt="" /></div><h3>Problems list</h3>
+                    <div class="mainProblem">
+                    <h4 class="ssnav">Tumors &amp; Growths</h4>
+                    <ul>
+                        <li><a href="#">Malignant melanoma, introduction</a></li>
+                        <li><a href="#">Malignant melanoma, 1993: shoulder</a></li>
+                        <li><a href="#">Malignant melanoma, 2000: left arm</a></li>
+                        <li><a href="#">Malignant melanoma, 2000: left temple, with possible spread</a></li>
+                        <li><a href="#">Malignant melanoma, 2002: left side of nose</a></li>
+                        <li><a href="#">Non-melanoma skin cancer</a></li>
+                        <li><a href="#">Skin cancer risk factors</a></li>
+                        <li><a href="#">Colonic polyps</a></li>
+                        <li><a href="#">Benign prostatic hypertrophy</a></li>
+                        <li><a href="#">Kidney cysts</a></li>
+                        <li><a href="#">Thyroid nodules</a></li>
+                    </ul>
+                    <h4 class="ssnav">Cardiovascular System</h4>
+                    <ul>
+                        <li><a href="#">Malignant melanoma, introduction</a></li>
+                        <li><a href="#">Malignant melanoma, 1993: shoulder</a></li>
+                        <li><a href="#">Malignant melanoma, 2000: left arm</a></li>
+                        <li><a href="#">Malignant melanoma, 2000: left temple, with possible spread</a></li>
+                        <li><a href="#">Malignant melanoma, 2002: left side of nose</a></li>
+                        <li><a href="#">Non-melanoma skin cancer</a></li>
+                        <li><a href="#">Skin cancer risk factors</a></li>
+                        <li><a href="#">Colonic polyps</a></li>
+                        <li><a href="#">Benign prostatic hypertrophy</a></li>
+                        <li><a href="#">Kidney cysts</a></li>
+                        <li><a href="#">Thyroid nodules</a></li>
+                    </ul>
+                    
+                </div>
+                </div>
+                
+            
+        	
+                <div class="titleMenuDashboard">
+                	<div class="reflect"></div>
+                    <div class="icontitleDashboard"><img src="/static/img/dashboard/patient-dashboard/calendar-icon.png" alt="" /></div><h3>Calendar</h3>
+                    <div>
+                    
+                    </div>
+                </div>
+        	
+            
+                <div class="titleMenuDashboard">
+                	<div class="reflect"></div>
+                    <div class="icontitleDashboard"><img src="/static/img/dashboard/patient-dashboard/icon-medication.png" alt="" /></div><h3>Medications</h3>
+                    <div>
+                    
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+    <div id="generalViewer">
+        <div id="menu">
+            <ul>
+                <li><a href="#">Timeline</a></li>
+                <li><a href="#">Diagnosis</a></li>
+                <li class="active"><a href="#">Vitals</a></li>
+                <li><a href="#">Imaging</a></li>
+                <li><a href="#">Genetics</a></li>
+                <li><a href="#">Risk Model</a></li>
+            </ul>
+        </div>
+    	<div id="humanBody"></div>
+        <div id="timeline"><div class="title"><h3 class="titleSection">Problem timeline</h3></div><div id="btexpandTimeline" class="collapsed-vertical"><a href="#" id="btnPatPanel">Collapse Panel</a></div><div id="timeline-patient"></div></div>
+      <script type="text/javascript">
+        var timeline_config = {
+         width: "800px",
+         height: "400px",
+         embed_id: "timeline-patient",
+         css: "/static/css/timeline.css",
+         source: '/static/js/json/patient_timeline.json'
+        }
+      </script>
+      <script type="text/javascript" src="/static/js/compiled/storyjs-embed.js"></script>
+  </div> <!-- end of generalViewer !-->
+    
+</div>
+<script src="/static/js/appMI.js" type="text/javascript"></script>
+<script type="text/javascript">
+$('.titleMenuDashboard').accordion({ header: "h3",collapsible: true,heightStyle: "content",active:1});
+$('.mainProblem').accordion({header : "h4",collapsible: true,autoHeight:true,heightStyle: "content"},"refresh");
+</script>
+</body>
+</html>
+

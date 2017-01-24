@@ -1,0 +1,60 @@
+{
+  "materials": {
+    "material__3": { "map_Kd": "Skull_diffuse.jpg" },
+    "material__4": { "map_Kd": "Skeleton_diffuse.jpg" }  },
+  "decodeParams": {
+    "decodeOffsets": [-3534,106,-2074,0,0,-511,-511,-511],
+    "decodeScales": [0.010800,0.010800,0.010800,0.000978,0.000978,0.001957,0.001957,0.001957]
+  },
+"urls": {
+    "58471413.female_skeleton.utf8": [
+      { "material": "material__3",
+        "attribRange": [0, 19806],
+        "indexRange": [158448, 9436],
+        "bboxes": 186756,
+        "names": ["female_skeletal"],
+        "lengths": [28308]
+      }
+    ]
+,
+    "7496e793.female_skeleton.utf8": [
+      { "material": "material__4",
+        "attribRange": [0, 8876],
+        "indexRange": [71008, 4156],
+        "bboxes": 83476,
+        "names": ["female_skeletal"],
+        "lengths": [12468]
+      }
+    ]
+,
+    "76faf241.female_skeleton.utf8": [
+      { "material": "material__4",
+        "attribRange": [0, 32348],
+        "indexRange": [258784, 15334],
+        "bboxes": 304786,
+        "names": ["female_skeletal"],
+        "lengths": [46002]
+      }
+    ]
+,
+    "f5dd89fd.female_skeleton.utf8": [
+      { "material": "material__4",
+        "attribRange": [0, 20094],
+        "indexRange": [160752, 9130],
+        "bboxes": 188142,
+        "names": ["female_skeletal"],
+        "lengths": [27390]
+      }
+    ]
+,
+    "3ac90f65.female_skeleton.utf8": [
+      { "material": "material__4",
+        "attribRange": [0, 4384],
+        "indexRange": [35072, 1988],
+        "bboxes": 41036,
+        "names": ["female_skeletal"],
+        "lengths": [5964]
+      }
+    ]
+  }
+}

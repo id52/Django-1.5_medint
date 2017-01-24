@@ -1,0 +1,267 @@
+<section class="ui-panel hide message-panel" id="message" style="display: block;">
+    <div class="topmenu">
+        <div class="menuleft">
+            <h4>MI+ Messages</h4>
+        </div>
+        <div class="menuright">
+            <div class="menuInner">
+                <input type="button" value="New message" id="btn-message-write" class="btn-write"/>
+                <a href="#" id="btn-address-book" data-bind="click:openAddressBook">Address book</a><!--<input type="button" value="Address book" id="btn-address-book" class="btn-write" />!-->
+            </div>
+        </div>
+
+    </div>
+    <div class="panel-column1">
+        <div class="folder-list">
+            <ul data-bind="foreach:folders">
+                <li data-bind="click: $root.selectFolder, css: { active: $data.title == $root.chosenFolder().title}" class="active">
+                    <a href="#" data-bind="text:$data.title"></a><span class="badge" data-bind="text:$data.count, visible:0!=$data.count"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="message-compose hide">
+        <div class="form-message" id="form-message">
+            <form>
+                <div class="forfield">
+                    <label for="subject">Subject :</label> <input type="text" placeholder="Type the subject of your message" name="subject" class="subject" id="subject"/>
+                </div>
+                <div class="tofield">
+                    <label for="to">To : </label>
+                    <!-- ko foreach: recipients -->
+                    <div class="userbadge">
+                    <span data-bind="text:$data.displayName" class="badge"></span><div class="btn-delete" data-bind="click:$root.removeRecipient">Delete</div>
+                    </div>
+                    <!-- /ko -->
+                    <input type="text" name="to" id="to" autocomplete="off" data-bind="event:{keyup: $root.showMatches, keypress:$root.preventSubmit}"/>
+                    <ul id="matched-contacts" data-bind="visible: matchedContacts().length>0, foreach:matchedContacts">
+                        <li data-bind="text:$data.displayName, click: $root.addRecipient"></li>
+                    </ul>
+                </div>
+                <div class="composer">
+                    <textarea name="text" style="width: 90%" class="msg-cmp" placeholder="Type your message here..." cols="5" rows="5"></textarea>
+                </div>
+                <div class="bottom-msg-panels">
+                    <div class="uploader-wrapper" style="position:relative"></div>
+                    <div class="buttons-block">
+                        <div class="button-list">
+                            <input type="checkbox" value="Private message"><span class="checkbox-label">Mark as a private message</span></input>
+                            <input type="button" value="Cancel" class="btn-cancel" id="btn-cancel-message">
+                            <input type="submit" value="Send" class="btn-write" id="btn-send-message">
+                            <div class="spinner" style="position:absolute;width: 20px;height: 20px;bottom: 9px;right: -14px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="panel-column2" >
+        <div class="message-list">
+            <form class="searchform">
+                <div class="searchInput">
+                    <input type="text" class="searchbox" name="msg-search" placeholder="Search">
+                    <button type="submit" class="uiSearchBtn"></button>
+                </div>
+            </form>
+            <div class="content" style="height:94%;width: 100%;">
+                <div data-bind="visible: (!discussions())||(discussions().length==0)" class="no-msg">
+                    <p>NO MESSAGES</p>
+                </div>
+                <div data-bind="delegatedHandler: 'click',dotTemplate: 'container_discussions'"></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="panel-column3">
+
+        <!-- ko with: discussion -->
+            <div class="head-message">
+                <div class="datas-discussion">
+                <h4><span data-bind="text:$data.subject"></span></h4>
+                <p data-bind="text:$data.displayMembers"></p>
+                <p><span data-bind="text:$data.sender" class="senders"></span></p>
+                </div>
+                <div class="buttons">
+                    <a href="#" class="btn-invite" data-bind="click:$root.openInviteAddressBook, visible:$root.chosenFolder().folder!='trash'" title="Add people">Invite user</a>
+                    <a href="#" class="btn-archive" data-bind="click: $root.archiveMessage, visible:$root.chosenFolder().folder=='inbox'" title="Archive message">Archive it</a>
+                    <a href="#" class="btn-recover" style="float:left" data-bind="click: $root.recoverMessage, visible:$root.chosenFolder().folder!='inbox'" title="Recover message">Recover it</a>
+                    <a href="#" class="btn-trash" data-bind="click: $root.deleteMessage" title="Delete message">Trash it</a>
+                    <div class="date-item" data-bind="text:$data.date"></div>
+                </div>
+
+            </div>
+        <!-- /ko -->
+
+        <!-- ko if: discussion()!=null -->
+            <div id="msglist"  data-bind="jScrollPane: {}" style="overflow: auto">
+                <div data-bind="delegatedHandler: 'click',dotTemplate: 'container_messages'"></div>
+                <div class="clearfix"></div>
+            </div>
+        <!-- /ko -->
+        {% verbatim %}
+        <script type="text/html" id="container_messages">
+            <ul>
+                {{~it.$data.discussion().messages :value:index }}
+                    <li {{? value.type != 0 }}style='display: none'{{?}}>
+                        <div class="head-message">
+                            <div class="users">
+                                <div class="user-avatar"><img src="/static/img/dashboard/default-user.png" alt=""/></div>
+                                <div class="content">
+                                    <div class="tools-message">
+                                        <ul {{? value.type != 1 }}style='display: none'{{?}}>
+                                            {{ (function() { var thisValue = value; }}
+                                            <li><a href="#" data-bind="delegatedClick: editMsg.bind(null,thisValue)">Edit</a> </li>
+                                            <li><a href="#" data-bind="delegatedClick: deleteMsg.bind(null,thisValue)">Delete</a> </li>
+                                            {{ })(); }}
+                                        </ul>
+                                    </div>
+                                    <p><span class="senders">{{= value.sender }}</span></p>
+                                    <p class="date">Posted on <span>{{= value.sent }}</span></p>
+                                    <p><span class="message-detail">{{= value.text }}</span></p>
+                                    {{? value.files }}
+                                    <p>
+                                         {{ for(var i in value.files) { }}
+                                            {{? value.files[i].isImage }}
+                                               <a href='/api/messaging/file/{{= value.files[i].id}}' rel="shadowbox[message-files];player=img" class="external" target="_blank">
+                                                    <img src='/api/messaging/file/thumbnail/{{= value.files[i].id}}' style="width:auto;height:100px;float:left"/>
+                                                </a>
+                                            {{??}}
+                                                <a href='/api/messaging/file/{{= value.files[i].id}}' download="{{= value.files[i].original_filename}}">
+                                                    <img src="/static/img/icon-file.png"/><br>
+                                                    <span>{{= value.files[i].original_filename }}</span>
+                                                </a>
+                                            {{?}}
+                                        {{ } }}
+                                    </p>
+                                    {{?}}
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li {{? value.type != 1 || value.type != 2}}style='display: none'{{?}} class="conversation-activity">
+                        <div class="head-message">
+                            <div class="users">
+                                <span class="date">{{= value.sent}}</span>
+                                <div class="login-icon"><img src="/static/img/dashboard/icons/{{? value.type == 1 }}join.png{{?? value.type == 2}}leave.png{{?}}" alt=""/></div>
+                                <div class="content">
+                                    <p>
+                                        <span class="login-senders">{{= value.sender}}</span>
+                                        <span class="login-message-detail">{{= value.text }}</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {{~}}
+            </ul>
+        </script>
+        {% endverbatim %}
+        <div id="reply-area" class="reply-area" data-bind="visible: ($root.discussion()!=null && $root.chosenFolder().folder!='trash')">
+                <div class="user-avatar"><img src="/static/img/dashboard/default-user.png" alt=""/></div>
+                <div class="reply-form">
+                    <form method="post">
+                        <textarea cols="3" rows="4" placeholder="Add a comment" name="text"></textarea>
+                        <div class="uploader-wrapper">
+                            <div id="uploader" class="attach-file-block" style="position:relative; cursor: pointer;">
+                                <!-- ko if:$root.selectedFiles().length == 0 -->
+                                    <span class="attach-msg" data-bind="click:$root.showSelector">To upload files, drag &amp; drop here, or select files from your computer...</span>
+                                <!-- /ko -->
+                                <!-- ko if:$root.selectedFiles().length != 0 -->
+                                    <span class="attach-msg">
+                                    <!-- ko foreach:$root.selectedFiles() -->
+                                        <span data-bind="text: $data"></span>
+                                    <!-- /ko -->
+                                    </span>
+                                <!-- /ko -->
+                                <input type="file" name="file" id="replyFile" multiple="true" style="cursor: pointer; direction: ltr; font-size: 20px; margin: 0; opacity: 0; position: absolute; left: 0; top: 10px; transform: translate(0px, 0px) scale(3);" />
+                                <ul class="files-list" id="files-list"></ul>
+                            </div>
+                        </div>
+                        <input type="submit" value="Add your reply" class="btn-write"/>
+                        <div class="spinner" style="position:absolute;right: 0;top: 0;width: 20px;height: 20px;"></div>
+                    </form>
+                </div>
+            </div>
+
+
+    </div>
+    <div id="contacts" class="modal hide">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">My address book</h3>
+        </div>
+        <div class="list-modal">
+            <ul data-bind="foreach:contacts">
+                <li >
+                    <a href="#" data-bind="click:$root.addRecipient, text:$data.displayName"></a></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+{% verbatim %}
+<script type="text/html" id="container_discussions">
+    <ul>
+        {{~it.$data.discussions() :value:index }}
+        <li {{? it.$root.discussion() !== null && value.id === it.$root.discussion().id }} class="active" {{?}}
+            data-bind="delegatedClick: selectDiscussion.bind(null,$data.discussions()[{{= index }}])">
+            <div class="message-item">
+                <div class="user-avatar"><img src="/static/img/dashboard/default-user.png" alt=""/></div>
+                <div class="item-sender">
+                    <h4>{{= value.starter.displayName() }}</h4>
+                    <p>{{= value.excerpt() }}</p>
+                </div>
+
+                <div class="rightState">
+                    <div class="badge {{? !value.count }} hide{{?}}" >{{= value.count }}</div>
+                    {{? value.timeago }}
+                        <p class='timeago' title="{{= value.last_msg_time }}"></p>
+                    {{?}}
+                    {{? !value.timeago }}
+                        <p class='last_msg_date'>{{= value.last_msg_date }}</p>
+                    {{?}}
+                </div>
+            </div>
+        </li>
+        {{~}}
+    </ul>
+</script>
+<!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <li class="template-upload">
+        <span style='display:inline-block; width:150px;overflow:hidden' class='filename'>{%=file.name%}</span>{% if (file.error) { %}<div><span class="label label-important">Error</span> {%=file.error%}</div>{% } %}
+        {% if (!i) { %}
+            <button class="btn btn-warning cancel">
+                <i class="icon-ban-circle icon-white"></i>
+                <span>Cancel</span>
+            </button>
+        {% } %}
+        {% if (!o.files.error) { %}<div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="bar" style="width:0%;"></div></div>{% } %}
+    </li>
+{% } %}
+</script>
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+    <li></li>
+</script>
+{% endverbatim %}
+
+<script src="/static/js/tmpl.min.js"></script>
+
+<script src="/static/js/jquery.timeago.js"></script>
+<script src="/static/js/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="/static/js/jquery.fileupload.js"></script>
+<script src="/static/js/jquery.fileupload-ui.js"></script>
+{#<script src="/static/js/eventsource.js"></script>#}
+
+
+
+
+<script>
+    $(function(){initMessages('#message');});
+</script>
+

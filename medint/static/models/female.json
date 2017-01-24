@@ -1,0 +1,153 @@
+{
+  "path": "/static/models/female/",
+  "scale": [0.1, 0.1, 0.1],
+  "origin": [0, 9.5, -0.75],
+  "camdist": -19,
+  "angle": [-0.5, 0.626],
+  "rendermode": 0,
+
+  "markers":
+  [
+    {"name": "Left Eye", "pos": [3.2447, 166.7120, -0.6624, 1.0]},
+    {"name": "Left Second Toe", "pos": [6.7754, 1.9919, 4.1942, 1.0]},
+    {"name": "Left Shoulder", "pos": [15.7120, 145.1165, -17.4509, 1.0]},
+    {"name": "Right Knee", "pos": [-7.0754, 50.9919, -4.1942, 1.0]}
+  ],
+
+  "scene":
+  {
+    "skin":
+    [
+      {
+        "file": "body.json",
+        "color": [1.0, 0.88, 0.77, 0.3],
+        "layer": 100,
+        "material": [0.05, 20]
+      },
+      {
+        "file": "eyes.json",
+        "color": [1.0, 0.88, 0.77, 0.3],
+        "layer": 110,
+        "material": [0.75, 50]
+      },
+      {
+        "file": "eyes_sclera.json",
+        "color": [1.0, 0.88, 0.77, 0.3],
+        "layer": 120,
+        "material": [0.75, 50]
+      }
+    ],
+
+    "breasts_milk":
+    [
+      {
+        "file": "breasts_milklobules.json",
+        "color": [0.8, 0.8, 0.8, 0.7],
+        "layer": 95,
+        "material": [0.5, 50]
+      }
+    ],
+
+    "breasts_fatty":
+    [
+      {
+        "file": "breasts_fattytissues.json",
+        "color": [0.8, 0.7, 0.5, 0.5],
+        "layer": 98,
+        "material": [0.5, 50]
+      }
+    ],
+
+    "muscles":
+    [
+      {
+        "file": "muscle.json",
+        "color": [0.8, 0.1, 0.1, 0.15],
+        "layer": 90,
+        "material": [0.5, 50]
+      }
+    ],
+
+    "lymphatic":
+    [
+      {
+        "file": "lymphatic.json",
+        "color": [0.3, 0.9, 0.3, 0.2],
+        "layer": 97,
+        "material": [0.5, 50]
+      }
+    ],
+
+    "skeleton":
+    [
+      {
+        "file": "bones.json",
+        "color": [0.8, 0.8, 0.8, 0.5],
+        "layer": 40,
+        "material": [0.5, 50]
+      }
+    ],
+
+    "respiratory":
+    [
+      {
+        "file": "respiratory.json",
+        "color": [0.3, 0.3, 0.9, 0.5],
+        "layer": 30,
+        "material": [0.5, 50]
+      }
+    ],
+
+    "digestive":
+    [
+      {
+        "file": "digestive.json",
+        "color": [0.9, 0.3, 0.6, 0.5],
+        "layer": 20,
+        "material": [0.5, 50]
+      }
+    ],
+
+    "urinary":
+    [
+      {
+        "file": "urinary.json",
+        "color": [0.8, 0.6, 0.6, 0.5],
+        "layer": 20,
+        "material": [0.5, 50]
+      }
+    ],
+
+    "nervous":
+    [
+      {
+        "file": "nervous.json",
+        "color": [0.9, 0.9, 0.6, 0.5],
+        "layer": 20,
+        "material": [0.5, 50]
+      }
+    ],
+
+    "circulatory":
+    [
+      {
+        "file": "circulatory_heart.json",
+        "color": [0.9, 0.3, 0.9, 0.5],
+        "layer": 20,
+        "material": [0.5, 50]
+      },
+      {
+        "file": "circulatory_veins.json",
+        "color": [0.3, 0.3, 0.9, 0.5],
+        "layer": 20,
+        "material": [0.5, 50]
+      },
+      {
+        "file": "circulatory_arteries.json",
+        "color": [0.9, 0.3, 0.3, 0.5],
+        "layer": 20,
+        "material": [0.5, 50]
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "result":"ok",
+    "data":[
+        {"date": "01.01.2013", "title": "Contract", "state":"new"},
+        {"date": "01.02.2013", "title": "Additional Agreement", "state":"Signed"},
+        {"date": "04.06.2013", "title": "Agreement for private medical research", "state":"Validated on 04.03.2013"}
+    ]
+}

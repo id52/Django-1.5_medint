@@ -1,0 +1,36 @@
+<h3>
+    <strong>Register</strong><br/>
+    <span class="littleT">Alpha Preview of Medical Intelligence</span>
+</h3>
+<form action="" method="POST" id="regMI" name="regMI">
+    <fieldset>
+        <dl>
+            <dd><input type="text" id="first_name" name="first_name" placeholder="First name" size="20" />
+            <input type="text" id="initial" name="middle_name" placeholder="Middle initial" size="10" class="initial"/>
+            <input type="text" id="lastname" name="last_name" placeholder="Last name" size="20" /></dd>
+        </dl>
+        <dl>
+            <dd>
+                <input type="text" id="emailR" name="email" placeholder="Email" size="20" class="Remail" />
+                <input type="text" id="phone" name="phone" placeholder="Phone number" size="20" class="Rphone" />
+            </dd>
+        </dl>
+        <dl>
+            <dd><input type="text" id="password" name="password" placeholder="Password" size="20" class="Rpassword" /><input type="text" id="password2" name="password2" placeholder="Confirm your password" size="20" class="Rpassword" /></dd>
+        </dl>
+        <input type="submit" value="Register" class="btn-login"/>
+        <dl>
+            <dd></dd>
+       </dl>
+  </fieldset>
+</form>
+<script type="text/javascript">
+    _width = document.body.clientWidth;
+    var btnRegOffset;
+    if(phone==true){
+        btnRegOffset = Math.round((_width*0.95-113)*0.5);
+
+        $('#regMI [type="submit"]').css('margin-left',btnRegOffset);
+
+    }
+</script>

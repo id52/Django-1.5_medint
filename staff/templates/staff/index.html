@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>    <html class="ie8" lang=""> <![endif]-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Medical Intelligence</title>
+<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=0">
+<link rel="stylesheet" type="text/css" href="/static/staff/css/mi_scrolling.css" media="all" />
+<link rel="stylesheet" type="text/css" href="/static/staff/css/bootstrap.css" media="all" />
+<link href="//fonts.googleapis.com/css?family=Puritan:400,700' rel='stylesheet' type='text/css">
+
+
+</head>
+
+<body class="hidden">
+<div id="scrolling">
+<div id="content">
+		<div id="mainContent">
+        <div id="logo" class="hidden"><a href="#!/main"><img src="/static/staff/img/big-logoMI.png" alt="" /></a></div>
+        </div> 
+	</div>
+    <div id="main" class="hidden">
+    	<div class="contentRub">
+            	<form action="" method="get" id="login-form" name="logMI">
+                	<div class="loginbox">
+                    <input type="text" name="username" placeholder="Username" size="30"/>
+                    <input type="password" name="password" placeholder="Password" size="30" autocomplete="off"/>
+                    <div class="input-yubi">
+                        <div class="icon">
+                        <img src="/static/staff/img/yubi-icon.png" alt="" style="display:inline-block"/>
+                        </div>
+                    <input type="password" name="otp" placeholder="YubiKey" size="30" class="noborder" style="border-bottom:none!important;" id="yubikey-log" data-toogle="yubikey-bubble" data-position="right"/>
+                    </div>
+                    </div>
+                	<input type="submit" value="Login" class="btn-signup" id="btn-sign"/>
+            	</form>
+                <p><a href="#!/forget" class="linkform" id="btn-forget">Lost your key or username?</a></p>
+                <div class="popover left in" id="yubikey-bubble">
+                    <div class="arrow"></div>
+                    <div class="popover-inner">
+                        <div class="popover-content">
+                        <div class="yubikeyimg"></div><h4>Yubikey</h4><p><strong>To login</strong>, please insert<br/> your YubiKey into a USB<br/> port and press it.</p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    
+    <div id="register" class="hidden">
+    	<div class="contentRub">
+        	<h3 class="titleDoctor">Staff Registration</h3>
+            <p class="instructions">Initialize your Yubikey.</p>
+            <form action="" method="get" class="otp-form">
+                <input type="password" name="otp" placeholder="Yubikey" size="30" class="yubi"/>
+                <input type="hidden" name="role" value="{{ roles.STAFF.id }}">
+                <div class="ajax-loader"></div>
+            </form>
+            <div class="popover left in yubikey-bubble-init">
+                <div class="arrow"></div>
+                    <div class="popover-inner">
+                        <div class="popover-content">
+                            <div class="yubikeyimg"></div><h4>Yubikey</h4><p><strong>To initialize</strong>, please insert<br/> your YubiKey into a USB<br/> port and press it.</p>
+                        </div>
+                    </div>
+             </div>
+            <p><a href="#!/not_invite_code" class="linkform">You don’t have a key ? Click here</a></p>
+        </div>
+    	
+    </div>
+    
+    <div id="forget" class="hidden">
+    	<div class="contentRub">
+            <h3>Lost your Username or Password ?</h3>
+        	<form action="" method="post" id="forgetForm" name="forgetForm">
+                <input type="text" name="email" placeholder="Please enter your email or your username" size="30"/>
+                <input type="submit" value="Submit" class="btn-signup"/>
+            </form>
+        </div>
+    </div>
+    
+    
+    
+    <div id="not_invite_code" class="sections">
+    	<div class="contentRub">
+        	<h3 class="titleDoctor">Staff Registration</h3>
+            <p>You don't have a YubiKey ? Please, fill the form.</p>
+            <form action="" method="post" id="staffNotInviteCode" name="staffNotInviteCode">
+                <input type="text" id="staff_email" name="staff_email" placeholder="Please enter your email" size="30"/>
+                <input type="submit" value="Submit" class="btn-signup"/>
+            </form>
+        </div>
+    </div>
+    
+    
+    <div id="staff_register" class="sections">
+    	<div class="contentRub">
+        	<h3 class="titleDoctor">Staff Registration</h3>
+             <p class="required-text"><span style="color:red">*</span> Required fields</p>
+            <form action="" method="post" id="staffRegisterForm" name="staffRegisterForm" class="registerForms">
+            	<div class="registerbox">
+                <div class="required">*</div>
+                <input type="text" name="firstname" placeholder="First name" size="30" data-val-required="true" data-val-regex="^[\w ]+$"/>
+                <div class="required">*</div>
+                <input type="text" name="lastname" placeholder="Last name" size="30" data-val-required="true" data-val-regex="^[\w ]+$"/>
+                <div class="required">*</div>
+                    <input type="text" name="username" placeholder="Please choose a username" size="30"  data-val-required="true" data-val-regex="^\w+$"/>
+                <div class="required">*</div>
+                    <input type="password" name="password" placeholder="Please choose a password" size="30" data-val-required="true" data-val-regex="^[\w\.]+$"/>
+                <div class="required">*</div>
+                    <input type="password" name="password1" placeholder="Confirm your password" size="30" data-val-required="true" data-val-equals="[name='password']" data-val-regex="^[\w\.]+$"/>
+                <div class="required">*</div>
+                    <input type="text" name="email" placeholder="Email" size="30" data-val-required="true" data-val-regex='^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'/>
+                <div class="required">*</div>
+                    <input type="text" name="phone" placeholder="Phone number" size="30" data-val-required="yes" data-val-regex="^([\+]*[0-9]{1,3}([ \.\-])?)?([\(]{1}[0-9]{3}[\)])?([0-9A-Z \.\-]{1,32})((p|x|ext|extension)?[0-9]{1,4}?)$"/>
+                <input type="hidden" name="yubiid">
+                <div class="selectbox">
+                <select name="staff_role" id="staff_role" style="border-bottom:none!important;" data-val-required="true">
+                	<option value="">--Your role</option>
+                    {% for r in staff_roles %}
+                        <option value="{{ r.id }}">{{ r.name }}</option>
+                    {% endfor %}
+                </select>
+                </div>
+                </div>
+                <input type="submit" value="Register" class="btn-signup" id="btn-register"/>
+            </form>
+        </div>
+   </div> 
+    <footer class="hidden">
+    	<ul>
+        	<li><a href="#!/main">Login</a></li>
+            <li><a href="#!/register">Register</a></li>
+        </ul>
+        <span class="copyright" style="margin-right:10px;">&copy; 2013 MedicalIntelligence, Ltd. All rights reserved.</span>
+    </footer>
+    <div class="bkg"></div>
+</div>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/static/staff/js/scripts.js"></script>
+<script type="text/javascript" src="/static/js/client.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.parallax.min.js"></script>
+<script type="text/javascript" src="/static/js/toastr.js"></script>
+<script language="javascript">
+    var optionspop = {
+        trigger:'focus',
+        placement:'left',
+        html:'true',
+        title:'',
+        content:'<div class="yubikeyimg"></div><h4>Yubikey</h4><p><strong>To login</strong>, please insert<br/> your YubiKey into a USB<br/> port and press it.</p>'
+    }
+
+    var optionsinit ={
+        trigger:'focus',
+        placement:'left',
+        html:'true',
+        title:'',
+        content:'<div class="yubikeyimg"></div><h4>Yubikey</h4><p><strong>To initialise</strong>, please insert<br/> your YubiKey into a USB<br/> port and press it.</p>'
+    }
+
+    /*$('.loginbox input#yubikey-log').popover(optionspop);
+    $('#register .yubi').popover(optionsinit);*/
+
+    $('.loginbox input#yubikey-log').on('focus',function(e){
+        $(' #yubikey-bubble').fadeIn(500);
+    });
+
+    $('.loginbox input#yubikey-log').on('focusout',function(e){
+        $(' #yubikey-bubble').fadeOut(500);
+    });
+
+    $('#register .yubi').on('focus',function(e){
+        $(' .yubikey-bubble-init').fadeIn(500);
+    });
+    $('#register .yubi').on('focusout',function(e){
+        $(' .yubikey-bubble-init').fadeIn(500);
+    });
+
+    document.createElement("section");
+    document.createElement("footer");
+    $(function(){
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                xhr.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
+            },
+            error:function(e, e1){
+                $.error('Internal error');
+                return false;
+            }
+        });
+    });
+</script>
+<!--[if lte IE 8]>
+<script type="text/javascript" src="/static/js/excanvas.js">
+</script>
+<script type="text/javascript" src="/static/js/jCorner.js">
+</script>
+<![endif]-->
+<script type="text/javascript" src="/static/js/medint.js"></script>
+<script type="text/javascript" src="/static/js/retina.js"></script>
+<script type="text/javascript" src="/static/js/jquery.cookie.js"></script>
+</body>
+</html>

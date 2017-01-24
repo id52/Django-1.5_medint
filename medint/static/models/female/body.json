@@ -1,0 +1,24 @@
+{
+  "materials":
+  {
+    "material__1ffs2": { "map_Kd": "Female_body_diffuse.png" }
+  },
+  "decodeParams":
+  {
+    "decodeOffsets": [-3564,66,-2128,0,0,-511,-511,-511],
+    "decodeScales": [0.010846,0.010846,0.010846,0.000978,0.000978,0.001957,0.001957,0.001957]
+  },
+  "urls":
+  {
+    "bd873725.female_skin.utf8":
+    [
+      { "material": "material__1ffs2",
+        "attribRange": [0, 17544],
+        "indexRange": [140352, 8684],
+        "bboxes": 166404,
+        "names": ["femalehuman_skin_lowpoly"],
+        "lengths": [26052]
+      }
+    ]
+  }
+}

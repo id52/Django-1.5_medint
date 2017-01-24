@@ -1,0 +1,165 @@
+{% extends "medint/logged_in.html" %}
+
+{% load medint %}
+
+{% block topmenu %}
+    <ul>
+        <li><a href="#message" id="btn-message">Messages</a></li>
+        <li><a href="#research" id="btn-research">Portfolio</a></li>
+        <li><a href="#" id="btn-action">Action Plan</a></li>
+        <li><a href="#" id="btn-records">Records</a></li>
+        <li><a href="#documents" id="btn-documents">Your Legals</a></li>
+    </ul>
+{% endblock %}
+
+
+{% block mainmenu %}
+    <div id="menuIcons" class="for4">
+        <div id="icon-mi-msg" class="iconsimg">
+            <a href="#message"><img src="/static/img/dashboard/icons/icon-mi-message.png" alt=""/></a>
+        </div>
+        <div id="icon-mi-research" class="iconsimg">
+            <a href="#research"><img src="/static/img/dashboard/icons/icon-mi-portfolio.png" alt=""/></a>
+        </div>
+        <div id="icon-mi-action" class="iconsimg">
+            <a href="#"><img src="/static/img/dashboard/icons/icon-mi-action.png" alt=""/></a>
+        </div>
+        <div id="icon-mi-records" class="iconsimg last-child">
+            <a href="#"><img src="/static/img/dashboard/icons/icon-mi-records.png" alt=""/></a>
+        </div>
+    </div>
+{% endblock %}
+
+{% load messaging %}
+
+{% block content %}
+    {% messaging user %}
+
+    <section class="ui-panel hidden" id="patients">
+        Patients
+    </section>
+
+    <section class="ui-panel hidden" id="documents">
+        <div class="contentViewer">
+            <div id="contentTable">
+                <h2>Your Legal Documents</h2>
+                <table id="document-list" class="tables">
+                    <thead class="topTable"><tr>
+                        <th class="column date">Date</th>
+                        <th class="column desc">Legal</th>
+                        <th class="column">State</th>
+                    </tr></thead>
+                    <tbody data-bind="foreach: dd">
+                    <tr>
+                        <td data-bind="text: date" class="column date"></td>
+                        <td data-bind="text: title" class="column desc desc-file"></td>
+                        <td data-bind="text: state" class="column state state-ok"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <section class="ui-panel hidden" id="accounts">
+        <div class="topmenu">
+            <div class="menuleft">
+                <h4>Account settings</h4>
+            </div>
+            <div class="menuright">
+
+            </div>
+        </div>
+
+        <div class="panel-column1">
+            <div class="folder-list" id="nav-settings">
+                <ul>
+                    <li class="active">
+                        <a href="#" id="btn-personal-settings">Personal information</a></span>
+                    </li>
+                    <li>
+                        <a href="#" id="btn-password-settings" >Email &amp; password</a></span>
+                    </li>
+                    <li>
+                        <a href="#" id="btn-notifications-settings">Notifications</a></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="settings-col">
+            <div class="personal-settings">
+                <form>
+                    <div class="mainUserInfo">
+
+                        <div class="content">
+                            <div class="userPicture"><img src="/static/img/dashboard/big-empty-avatar.jpg" alt=""></div>
+                            <h2>{{ user.user_info.first_name }} {{ user.user_info.last_name }}</h2>
+                            <p class="doctorMail">{{ user.user_info.email }}</p>
+                            <div class="attach-file-block">
+                                <span class="attach-msg">To upload photo, drag &amp; drop here, or select files from your computer...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="personalInfoData">
+                        <h2>Update personal information</h2>
+                        <div class="colLeft">
+                            <label for="phone">Phone number</label><input type="text" value="" id="phone" data-bind="value:userphone"/>
+                            <label for="city">City</label><input type="text" value="" id="city" data-bind="value:usercity"/>
+                            <label for="zipcode">Zip Code</label><input type="text" value="" id="zipcode" data-bind="value:userzipcode"/>
+                        </div>
+                        <div class="colRight">
+                            <label for="address">Address</label><input type="text" value="" id="address" data-bind="value:useraddress"/>
+                            <label for="state">State</label><input type="text" value="" id="state" data-bind="value:userstate"/>
+                        </div>
+
+                    </div>
+                    <div class="button-form"><input type="submit" value="Update" class="btn-write" id="btn-update-info"></div>
+                </form>
+            </div>
+            <div class="password-settings hidden">
+                <form>
+                    <div class="mainUserInfo">
+                        <div class="content">
+                            <div class="userPicture"><img src="/static/img/dashboard/big-empty-avatar.jpg" alt=""></div>
+                            <h2>{{ user.user_info.first_name }} {{ user.user_info.last_name }}</h2>
+                            <p class="doctorMail">{{ user.user_info.email }}</p>
+                        </div>
+
+                    </div>
+                    <div class="personalInfoData">
+
+                        <div class="colLeft">
+                            <h2>Update  password</h2>
+                            <label for="old-password">Old password</label><input type="password" id="old-password" data-bind="value:userpwd"/>
+                            <label for="new-password">New password</label><input type="password" id="new-password" value=""/>
+                            <label for="confirm-password">Confirm password</label><input type="password" id="confirm-password" value=""/>
+                            <input type="submit" value="Update" class="btn-write" id="btn-update-password">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="notifications-settings hidden">
+                <form>
+                    <div class="mainUserInfo">
+                        <div class="content">
+                            <div class="userPicture"><img src="/static/img/dashboard/big-empty-avatar.jpg" alt=""></div>
+                            <h2>{{ user.user_info.first_name }} {{ user.user_info.last_name }}</h2>
+                            <p class="doctorMail">{{ user.user_info.email }}</p>
+                        </div>
+                    </div>
+                    <div class="personalInfoData">
+                        <div class="colLeft">
+                            <h2>Email notifications</h2>
+                            <label for="intake">Intake</label><input type="checkbox" id="intake" value=""><span class="checkbox-label">When a part of intake isn't finish</span></input>
+                            <label for="discussions-respond">Discussions</label><input type="checkbox" id="discussions-respond" value="" checked="checked"><span class="checkbox-label">When someone responds to a discussion with you</span></input><br/>
+                            <div class="checkbox-line"><input type="checkbox" id="discussion-folder" value=""><span class="checkbox-label">When someone create a new discussion about your folder</span></input></div>
+                            <label for="chart-review">Chart review</label><input type="checkbox" id="chart-review" value=""><span class="checkbox-label">When someone shares a new report</span></input>
+                            <label for="message-notification">Messages</label><input type="checkbox" id="message-notification" value="" checked="checked"><span class="checkbox-label">When someone post a new message</span></input>
+                            <div class="submit-line"><input type="submit" value="Update" class="btn-write" id="btn-update-notifications"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

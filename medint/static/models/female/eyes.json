@@ -1,0 +1,19 @@
+{
+  "materials": {
+    "female_body_innereyes": { "map_Kd": "Female_eye_diffuse.jpg" }  },
+  "decodeParams": {
+    "decodeOffsets": [-8191,320754,-5343,0,0,-511,-511,-511],
+    "decodeScales": [0.000517,0.000517,0.000517,0.000978,0.000978,0.001957,0.001957,0.001957]
+  },
+"urls": {
+    "5ac550e6.female_eyes.utf8": [
+      { "material": "female_body_innereyes",
+        "attribRange": [0, 1408],
+        "indexRange": [11264, 704],
+        "bboxes": 13376,
+        "names": ["female_body_eyes"],
+        "lengths": [2112]
+      }
+    ]
+  }
+}

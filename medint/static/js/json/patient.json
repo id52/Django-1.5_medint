@@ -1,0 +1,8 @@
+{
+	"patient":{
+		"datas":
+		{
+			"name":"John","lastname":"Smith","age":"40","sex":"M","weight":"110","ethnicity":"Caucasian","vitals":"80"
+		}
+	}
+}

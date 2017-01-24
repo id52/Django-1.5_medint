@@ -1,0 +1,19 @@
+{
+  "materials": {
+    "material__76": { "map_Kd": "RespiratorySystem_diffuse.jpg" }  },
+  "decodeParams": {
+    "decodeOffsets": [-4650,39490,-6999,0,0,-511,-511,-511],
+    "decodeScales": [0.002837,0.002837,0.002837,0.000978,0.000978,0.001957,0.001957,0.001957]
+  },
+"urls": {
+    "154fe337.female_respiratory.utf8": [
+      { "material": "material__76",
+        "attribRange": [0, 10114],
+        "indexRange": [80912, 4918],
+        "bboxes": 95666,
+        "names": ["female_respiratorysystem"],
+        "lengths": [14754]
+      }
+    ]
+  }
+}

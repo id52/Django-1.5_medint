@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>    <html class="ie8" lang=""> <![endif]-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Medical Intelligence</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/static/css/medical_scrolling.css" media="all" />
+<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" media="all" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+<script type="text/javascript" src="/static/js/client.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.js"></script>
+<script type="text/javascript" src="/static/js/jquery.parallax.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.cookie.js"></script>
+
+<script language="javascript">
+document.createElement("section");
+document.createElement("footer");
+document.createElement("canvas");
+</script>
+<!--[if lte IE 8]>
+<script type="text/javascript" src="js/excanvas.js">
+</script>
+<script type="text/javascript" src="js/jCorner.js">
+</script>
+<![endif]-->
+<script type='text/javascript' src='/static/js/jquery.percentageloader-0.1.min.js'></script>
+<script type="text/javascript" src="/static/js/medint.js"></script>
+<script type="text/javascript" src="/static/js/scripts.js"></script>
+<link rel="stylesheet" href="/static/css/jquery.percentageloader.css" />
+<script type="text/javascript">
+$(function(){
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            xhr.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
+        },
+        error:function(e, e1){
+            $.error('Internal error');
+            return false;
+        }
+    });
+    $('#medicalSignup').submit(function(){
+        var email = $.trim($('[name="email"]', $(this)).val());
+        if ('' == email){
+            $.error('Enter your email');
+            return false;
+        }
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if(!re.test(email)){
+            $.error('Your email format is not correct. Please enter a valid email.');
+            return false;
+        }
+        var data = $(this).serializeObject();
+        $.ajax({
+            url : '/api/saveAddress',
+            type : 'POST',
+            dataType : 'json',
+            data : data,
+            success : function(json){
+                if ('ok' == json.result){
+                    $.success('Your email has been added to our list. You will be notified soon !');
+                } else {
+                    $.error(json.description);
+                }
+            }
+        });
+        return false;
+    });
+    $('#regMI').submit(function(){
+        var $form = $(this);
+        var data = $form.serializeObject();
+        $.ajax({
+            url:'/api/register',
+            type:'POST',
+            data : data,
+            dataType : 'json',
+            success : function(json){
+                if('ok' == json.result){
+                    $.success('Thank you for registering with us - we will contact you soon with more information about our products and services.');
+                    location='#!/main';
+                }
+                if('validation' == json.result){
+                    var msg="";
+                    for (f in json.fields){
+{#                        $('<div class="error-description"/>').text(json.fields[f]).insertAfter($('[name="'+f+'"]', $form));#}
+                        $('[name="'+f+'"]', $form).addClass('error-field');
+                        msg += '<div>'+$('[name="'+f+'"]', $form).attr('placeholder')+': ' + json.fields[f][0]+'</div>';
+                    }
+                    $.error(msg);
+                    console.log(msg)
+                } else if('error' == json.result){
+                    $.error(json.description);
+                }
+            }
+        });
+        return false;
+    });
+    $(document).on('submit','#login_form',function(){
+        var $form = $(this);
+        var data = $form.serializeObject();
+        $.ajax({
+            url:'/api/login',
+            type:'POST',
+            data : data,
+            dataType : 'json',
+            success : function(json){
+                if('ok' == json.result){
+                    location.reload();
+                }
+                if('validation' == json.result){
+                    for (f in json.fields){
+                        $('<div class="error-description"/>').text(json.fields[f]).insertAfter($('[name="'+f+'"]', $form));
+                        $('[name="'+f+'"]', $form).addClass('error');
+                    }
+                } else if('error' == json.result){
+                    $.error(json.description);
+                }
+            }
+        });
+        return false;
+    });
+    $(document).on('submit','#lost-password-form',function(){
+        $.ajax({
+            data : $(this).serializeObject(),
+            url : '/api/lostPassword',
+            dataType : 'json',
+            type : 'POST',
+            success : function(json){
+                if('ok' == json.result){
+                    $.success('Recovery mail sent');
+                } else {
+                    $.error(json.description);
+                }
+            }
+        });
+        return false;
+    });
+});
+</script>
+
+</head>
+
+<body>
+<div class="alert alert-success" id="alert-success"></div>
+<div class="alert alert-error" id="alert-error"></div>
+<div id="loader"></div>
+<div id="scrolling">
+<div id="background">
+	<img src="/static/img/bkg-scrolling.jpg" alt=""/>
+	</div>
+<section id="main">
+		<div id="mainContent">
+        <div id="logo"></div>
+        
+        <div id="loginb">
+        	
+        	<div id="ctLogin">
+            <h3>Coming Soon.</h3>
+            <p>Enter your e-mail to be notified when we launch.</p>
+            <form action="" method="post" id="medicalSignup" name="medicalSignup">
+            <input type="text" id="email" name="email" placeholder="Your e-mail address" size="30"/>
+            <input type="submit" value="Sign up" class="btn-signup"/>
+            </form>
+            </div>
+        	<div id="box" class="round">
+            </div>
+            <div class="shadow"></div>
+            
+        </div>
+         
+        <div id="who">
+        	<h2>Evidence-based Personalized Medicine.</h2>
+            <p>Medical+Intelligence believes that individual health outcomes can be optimized through better medical decisions based on the best available evidence, inference and reasoning.</p>
+        </div>
+        
+        </div>
+        
+	</section>
+    <div id="logoP"></div>
+    <section id="login">
+    	<div id="loginPanel">
+    	<div id="ctPanel">
+    	    <h3>Doctor Login</h3>
+            <form action="" method="post" id="login_form">{%csrf_token%}
+                <input type="text" name="email" placeholder="E-mail" size="30"/>
+                <input type="password" name="password" placeholder="Password" size="30"/>
+                <input type="submit" value="Login" class="btn-login"/>
+            </form>
+            <div class="links">
+                <a href="#" class="flinks" id="btn-forget">Forgot your password?</a>
+                <a href="#!/register" class="flinks">Register</a>
+            </div>
+        </div>
+        
+    	<div id="loginbox"></div>
+        <div class="shadows"></div>
+    	</div>
+    </section>
+    <section id="register">
+    	<div id="registerPanel">
+        <div id="ctRPanel">
+        	<h3><strong>Register</strong><br/>
+            <span class="littleT">Alpha Preview of Medical Intelligence</span></h3>
+            <form action="" method="get" id="regMI" name="regMI">
+            <fieldset>
+                	<dl>
+                        <dt>&nbsp;</dt><dd><input type="text" id="fname" name="first_name" placeholder="First name" size="20" class="validating"/>
+                        <input type="text" id="initial" name="middle_name" placeholder="Middle initial" size="10" class="initial validating"/>
+                        <input type="text" id="lastname" name="last_name" placeholder="Last name" size="20" class="validating"/></dd>
+                    </dl>
+                    <dl>
+                    	<dt>&nbsp;</dt>
+                        <dd><input type="text" id="emailR" name="email" placeholder="Email" size="20" class="Remail validating" />
+                            <input type="text" id="phone" name="phone" placeholder="Phone number" size="20" class="Rphone validating" /></dd>
+                    </dl>
+                    <dl>
+                    	<dt>&nbsp;</dt>
+                        <dd><input type="text" id="password" name="password" placeholder="Password" size="20" class="Rpassword validating" /><input type="text" id="password2" name="password2" placeholder="Confirm your password" size="20" class="Rpassword validating" /></dd>
+                    </dl>
+                    <dl>
+                    	<dt>&nbsp;</dt>
+                        <dd><input type="submit" value="Register" class="btn-login"/></dd>
+                   </dl>
+                </fieldset>
+            	
+            </form>
+        </div>
+        <div id="registerbox">
+        </div>
+        <div class="shadows"></div>
+    	</div>
+	</section>
+    
+    
+    <footer>
+    	<ul>
+        	<li><a href="#!/login">Login</a></li>
+            <li><a href="#!/register">Register</a></li>
+            <li style="margin-right:10px;"><span class="copyright">&copy; 2012 MedicalIntelligence, Ltd. All rights reserved.</span></li>
+        </ul>
+    </footer>
+    <div class="bkg"></div>
+</div>
+</body>
+</html>

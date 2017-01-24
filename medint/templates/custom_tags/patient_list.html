@@ -1,0 +1,231 @@
+<section class="ui-panel hidden" id="patients">
+    <div class="topmenu">
+        <div class="searchmodule">
+        <form class="searchform">
+            <div class="searchInput">
+                <input type="text" class="searchbox" name="msg-search" placeholder="Search">
+                <button type="submit" class="uiSearchBtn"></button>
+            </div>
+        </form>
+        </div>
+        <div class="list-options-view">
+            <ul>
+                <li id="option-list" data-bind="click: function(data, event) { setType('list', data, event)}, css: { active: presentationType() == 'list'}"><span class="button-list">List view</span></li>
+                <li id="option-grid" data-bind="click: function(data, event) { setType('grid', data, event)}, css: { active: presentationType() == 'grid'}"><span class="button-grid">Grid view</span></li>
+            </ul>
+        </div>
+        <div class="patient-menu hidden">
+            <ul>
+                <li><a href="#" class="btn-dashboard active">Dashboard</a></li>
+                <li><a href="#">Intake</a></li>
+                <li><a href="#">Medical Records</a></li>
+                <li><a href="#">Imaging</a></li>
+                <li><a href="#">Research</a></li>
+                <li><a href="#">Discussions</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="listViewer" data-bind="visible:patient() == null">
+        <ul data-bind="foreach: patients, css:presentationClass">
+            <li>
+                <div class="item">
+                    <div class="patientInfo">
+                        <div class="user-avatar"><img src="/static/img/dashboard/default-user.png" alt=""/></div>
+                        <div class="name-patient">
+                            <h4><a data-bind="attr: {'href':  '#patients/'+ id}, text:full_name"></a></h4>
+{#                            <h4><a data-bind="attr: {'href':  '/patientinfo/'+ id}, text:full_name"></a></h4>#}
+                            <div class="patient-excerpt">
+                                <p><span data-bind="text:sex"></span>, <span data-bind="text:age"></span> Yrs. Old</p>
+                                <p class="phone"><span class="title">Tel. :</span><span data-bind="text:phone"></span></p>
+                            </div>
+                        </div>
+                        <div class="buttons-list">
+                        <div class="button intake"></div>
+                        <div class="button medrecords"></div>
+                        <div class="button img"></div>
+                        <div class="button labo"></div>
+                    </div>
+                    </div>
+                    <div class="latest-discuss">
+                        <h5>Latest discussions</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</p>
+                    </div>
+                    <div class="main-topics">
+                        <span class="number">3</span> discussions, <span class="number">2</span> files
+                    </div>
+                </div>
+
+
+            </li>
+        </ul>
+    </div>
+
+    <div class="patientViewer" data-bind="visible:patient() != null, with: patient()">
+        <div class="patient-static-grid">
+            <ul>
+                <li style="min-height:230px;">
+                    <div class="content">
+                        <div class="patientInfo">
+                            <div class="user-avatar"><img src="/static/img/dashboard/default-user.png" alt=""/></div>
+                            <div class="name-patient"><h4 data-bind="text:full_name"></h4><p><span data-bind="text:sex"></span>, <span data-bind="text:age"></span> Yrs. Old</p></div>
+                        </div>
+                        <div class="patientDetails">
+                            <div class="content">
+                                <p class="info">Melanomas are dangerous skin cancers. Abe John Smith has had four melanomas (at least), as follows:</p>
+                                <p class="directions"><span class="title">TEL: </span> <span data-bind="text:phone">(415) 555-5555</span></p>
+                                <p class="directions"><span class="title">ADDRESS: </span> <span data-bind="text:address"></span><br/><span data-bind="text:city"></span>, <span data-bind="text:state"></span> <span data-bind="text:zipcode"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="transparent">
+                    <div class="patientDiscussions-modules">
+                        <div class="title">
+                        <h4>Latest discussions</h4>
+                         <div class="btn-see"><a href="#">See all</a></div>
+                        </div>
+                        <ul>
+                            <li>
+                                <div class="user-avatar"><img src="/static/img/dashboard/default-user.png" alt=""/></div>
+                                <div class="discussion-content">
+                                    <div class="header-info">
+                                        <span class="username">Dr. John Librett - </span><span class="discussionname">Main subject</span>
+                                    </div>
+                                    <div class="excerpt-discussion">
+                                        <p>Lorem ipsum dolor sit amet! Sagittis porta semper magna porta litora.</p>
+                                    </div>
+                                </div>
+                                <div class="info-thread">
+                                    <div class="badge">1</div>
+                                    <div class="date">
+                                            Jan 19
+                                      </div>
+
+                                </div>
+                            </li>
+                            <li>
+                                <div class="user-avatar"><img src="/static/img/dashboard/default-user.png" alt=""/></div>
+                                <div class="discussion-content">
+                                    <div class="header-info">
+                                        <span class="username">Dr. Wanda Carter - </span><span class="discussionname">The nodle</span>
+                                    </div>
+                                    <div class="excerpt-discussion">
+                                        <p>Lorem ipsum dolor sit amet! Sagittis porta semper magna porta litora.</p>
+                                    </div>
+                                </div>
+                                <div class="info-thread">
+                                    <div class="badge">3</div>
+                                    <div class="date"> Jan 14</div>
+                                </div>
+                            </li>
+                         </ul>
+                        <div class="btn-more-discuss"><a href="#">3 more discussions</a></div>
+                     </div>
+                </li>
+            </ul>
+        </div>
+        <div class="patients-grid">
+            <ul>
+                <li data-row="1" data-col="1" data-sizex="4" data-sizey="2" class="block">
+                        <div class="content">
+                            <div class="title"><h4 class="medical"><a data-bind="attr: {'href':'/patientinfo/'+ id}">Medical Records</a></h4></div>
+                            <div class="container-module">
+                               <div class="columnizer">
+                                    <div class="one-quarter first">
+                                        <img src="/static/img/dashboard/patient-dashboard/allergies-tpl.png" alt=""/>
+                                    </div>
+                                    <div class="two-quarter center">
+                                        <a data-bind="attr: {'href':'/patienttimeline/'+ id}"><img src="/static/img/dashboard/patient-dashboard/medical-journal-tpl.png" alt=""/></a>
+                                    </div>
+                                    <div class="one-quarter last center">
+                                        <img src="/static/img/dashboard/patient-dashboard/human-body-tpl.png" alt=""/>
+                                    </div>
+                                   </div>
+                            </div>
+                        </div>
+                </li>
+                <li data-row="3" data-col="1" data-sizex="1" data-sizey="3" class="block">
+                    <div class="content">
+                            <div class="title"><h4 class="intake">Patient Intake</h4></div>
+                            <div class="container-module center">
+                                <img src="/static/img/dashboard/patient-dashboard/patient-intake-tpl.png" alt="" style="margin-top: 40px;"/>
+                            </div>
+                      </div>
+                </li>
+
+                <li data-row="3" data-col="2" data-sizex="2" data-sizey="3" class="block imaging multipage">
+                    <div class="content">
+                            <div class="title"><h4 class="imaging">Imaging</h4></div>
+                            <div class="container-module">
+                                <div class="slides" style="margin-top:40px;margin-left:5%;">
+                                    <a href="/static/img/dashboard/patient-dashboard/imaging/mri01.jpg" rel="shadowbox[mri]"><img src="/static/img/dashboard/patient-dashboard/imaging/mri01.jpg"/></a>
+                                    <a href="/static/img/dashboard/patient-dashboard/imaging/mri02.jpg" rel="shadowbox[mri]"><img src="/static/img/dashboard/patient-dashboard/imaging/mri02.jpg"/></a>
+                                    <a href="/static/img/dashboard/patient-dashboard/imaging/mri03.jpg" rel="shadowbox[mri]"><img src="/static/img/dashboard/patient-dashboard/imaging/mri03.jpg"/></a>
+                                    <a href="/static/img/dashboard/patient-dashboard/imaging/mri04.jpg" rel="shadowbox[mri]"><img src="/static/img/dashboard/patient-dashboard/imaging/mri04.jpg"/></a>
+                                </div>
+                            </div>
+                        </div>
+                </li>
+                <li data-row="3" data-col="4" data-sizex="1" data-sizey="3" class="block">
+                    <div class="content">
+                            <div class="title"><h4 class="research">Research</h4></div>
+                            <div class="container-module center">
+                                 <img src="/static/img/dashboard/patient-dashboard/research-tpl.png" alt="" style="margin-top: 40px;"/>
+                            </div>
+                        </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+</section>
+<script>
+    function initPatient(sel){
+        function PatientModel(){
+
+            var self = this;
+            self.patient = ko.observable(null);
+            self.patients = ko.observable([]);
+            self.presentationType = ko.observable('grid');
+            self.presentationClass = ko.computed(function(){
+                if ('grid' === self.presentationType()){
+                    return 'list-thumbs';
+                } else {
+                    return 'list-line';
+                }
+            });
+
+            var res = $.rest.get('/api/medint/patient/');
+            if (res.isOk && undefined !== res.data){
+                self.patients(res.data);
+            }
+
+            self.setType = function(presentType, data, evt){
+                self.presentationType(presentType);
+            }
+
+            self.setAdditional = function (param) {
+                if (null == param){
+                    self.patient(null);
+                    return;
+                }
+                var i;
+                for (i=0; i<self.patients().length; i++){
+                    if (self.patients()[i].id == param){
+                        console.log(self.patients()[i]);
+                        self.patient(self.patients()[i]);
+                        break;
+                    }
+                }
+                console.log('Set ' + param);
+
+            }
+        }
+        ko.applyBindings(new PatientModel(), $(sel)[0]);
+    }
+    initPatient('#patients');
+</script>
+
